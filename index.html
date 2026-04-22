@@ -37,6 +37,7 @@
 }
 </script>
 </head>
+
 <style>
 /* ==========================================================================
    MEHBARA v3 — Multi-page + Fixed Sidebar + Accordion
@@ -1684,7 +1685,555 @@ ul { list-style: none; }
     transition-duration: .01ms !important;
   }
 }
+
+/* ==========================================================================
+   NEW — HERO TRUST ROW (below CTAs)
+   ========================================================================== */
+.hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-4) var(--s-5);
+  margin-top: var(--s-5);
+  padding-top: var(--s-4);
+  border-top: 1px dashed var(--line);
+}
+.hero-trust li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--t-xs);
+  color: var(--ink-dim);
+}
+.hero-trust li svg {
+  width: 14px; height: 14px;
+  stroke: var(--ink);
+  fill: none;
+  stroke-width: 2.5;
+  flex-shrink: 0;
+}
+.hero-promise {
+  font-size: var(--t-base);
+  color: var(--ink);
+  font-weight: 500;
+  max-width: 45ch;
+  margin-bottom: var(--s-4);
+  line-height: 1.55;
+  opacity: 0;
+  animation: fadeUp .6s var(--ease-soft) .8s forwards;
+}
+
+/* ==========================================================================
+   NEW — SECTION TITLE / LEDE (reusable)
+   ========================================================================== */
+.section-title {
+  font-size: var(--t-2xl);
+  letter-spacing: -.01em;
+  font-weight: 500;
+  margin-bottom: var(--s-3);
+  line-height: 1.2;
+}
+.section-lede {
+  font-size: var(--t-sm);
+  color: var(--ink-dim);
+  max-width: 52ch;
+  margin-bottom: var(--s-5);
+}
+
+/* ==========================================================================
+   NEW — WHY US AS CHIPS (compact 6-item grid on home)
+   ========================================================================== */
+.home-why {
+  padding-block: clamp(40px, 6vw, 80px);
+  border-top: 1px solid var(--line);
+}
+.why-chips {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-3);
+}
+.why-chip {
+  padding: var(--s-4) var(--s-4);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  transition: border-color .25s, transform .3s var(--ease);
+}
+.why-chip:hover { border-color: var(--line-2); transform: translateY(-2px); }
+.why-chip .chip-num {
+  font-size: var(--t-xs);
+  color: var(--ink-mute);
+  letter-spacing: .1em;
+  display: block;
+  margin-bottom: var(--s-2);
+}
+.why-chip strong {
+  display: block;
+  font-size: var(--t-base);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.why-chip p { font-size: var(--t-xs); color: var(--ink-dim); line-height: 1.5; }
+
+/* ==========================================================================
+   NEW — TESTIMONIALS
+   ========================================================================== */
+.home-testimonials {
+  padding-block: clamp(40px, 6vw, 80px);
+  border-top: 1px solid var(--line);
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-4);
+}
+.testimonial {
+  padding: var(--s-5);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  transition: border-color .25s, transform .3s var(--ease);
+}
+.testimonial:hover { border-color: var(--line-2); transform: translateY(-3px); }
+.stars-row {
+  color: #f5c451;
+  font-size: var(--t-base);
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.testimonial blockquote {
+  font-size: var(--t-sm);
+  color: var(--ink);
+  line-height: 1.7;
+  flex: 1;
+  font-style: italic;
+  position: relative;
+  padding-inline-start: var(--s-3);
+  border-inline-start: 2px solid var(--line-2);
+}
+.testimonial figcaption {
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.testimonial figcaption strong { font-size: var(--t-sm); font-weight: 500; }
+.testimonial figcaption span { font-size: var(--t-xs); color: var(--ink-mute); }
+
+/* ==========================================================================
+   NEW — TRUST SECTION (Maroof + payments + shipping)
+   ========================================================================== */
+.home-trust {
+  padding-block: clamp(40px, 6vw, 80px);
+  border-top: 1px solid var(--line);
+}
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-4);
+}
+.trust-cell {
+  padding: var(--s-5);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.trust-ic {
+  width: 44px; height: 44px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-full);
+  display: grid; place-items: center;
+}
+.trust-ic svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+.trust-cell h4 { font-size: var(--t-base); font-weight: 500; }
+.trust-cell p { font-size: var(--t-xs); color: var(--ink-dim); line-height: 1.6; }
+.pay-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.pay-badge {
+  font-size: 11px;
+  letter-spacing: .03em;
+  padding: 5px 10px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-full);
+  color: var(--ink-dim);
+  background: var(--bg);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   NEW — NAV CART BADGE (inside sidebar nav item)
+   ========================================================================== */
+.nav-badge {
+  margin-inline-start: auto;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--r-full);
+  font-size: 11px;
+  font-weight: 600;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.nav-badge.is-visible { display: inline-flex; }
+.nav-link.is-active .nav-badge {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   NEW — BLOG
+   ========================================================================== */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-4);
+}
+.blog-card {
+  padding: var(--s-5);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  cursor: pointer;
+  transition: transform .3s var(--ease), border-color .25s, box-shadow .3s;
+}
+.blog-card:hover { transform: translateY(-4px); border-color: var(--line-2); box-shadow: var(--shadow-md); }
+.blog-card-tag {
+  align-self: flex-start;
+  font-size: var(--t-xs);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px var(--s-3);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-full);
+  color: var(--ink-dim);
+}
+.blog-card h3 {
+  font-size: var(--t-xl);
+  letter-spacing: -.01em;
+  line-height: 1.25;
+  font-weight: 500;
+}
+.blog-card p {
+  font-size: var(--t-sm);
+  color: var(--ink-dim);
+  line-height: 1.6;
+  flex: 1;
+}
+.blog-card-meta {
+  font-size: var(--t-xs);
+  color: var(--ink-mute);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line);
+  display: flex;
+  gap: var(--s-2);
+  align-items: center;
+}
+
+/* BLOG POST */
+.post-meta {
+  display: flex;
+  gap: var(--s-3);
+  font-size: var(--t-sm);
+  color: var(--ink-mute);
+  margin-top: var(--s-3);
+}
+.post-body {
+  max-width: 680px;
+  font-size: var(--t-base);
+}
+.post-body h2, .post-body h3 {
+  margin: var(--s-6) 0 var(--s-3);
+  letter-spacing: -.01em;
+  font-weight: 500;
+}
+.post-body h2 { font-size: var(--t-2xl); }
+.post-body h3 { font-size: var(--t-xl); }
+.post-body p {
+  color: var(--ink-dim);
+  line-height: 1.85;
+  margin-bottom: var(--s-4);
+}
+.post-body ul, .post-body ol {
+  margin: 0 0 var(--s-4);
+  padding-inline-start: var(--s-5);
+}
+.post-body li {
+  color: var(--ink-dim);
+  line-height: 1.75;
+  margin-bottom: var(--s-2);
+  list-style: disc;
+}
+.post-body blockquote {
+  margin: var(--s-5) 0;
+  padding: var(--s-4) var(--s-5);
+  border-inline-start: 3px solid var(--ink);
+  background: var(--bg-2);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  font-style: italic;
+  color: var(--ink);
+  font-size: var(--t-lg);
+}
+.post-body strong { color: var(--ink); font-weight: 600; }
+
+/* ==========================================================================
+   NEW — CART PAGE
+   ========================================================================== */
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin-bottom: var(--s-6);
+}
+.cart-row {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: var(--s-4);
+  align-items: center;
+  padding: var(--s-4);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
+.cart-row-visual {
+  aspect-ratio: 4/5;
+  background: var(--bg);
+  border-radius: var(--r-md);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.cart-row-visual svg { width: 55%; filter: drop-shadow(0 10px 20px rgba(0,0,0,.3)); }
+.cart-row-info h3 { font-size: var(--t-base); font-weight: 500; margin-bottom: 2px; }
+.cart-row-info h3 small { display: block; font-size: var(--t-xs); color: var(--ink-mute); letter-spacing: .05em; margin-top: 2px; font-weight: 400; }
+.cart-row-info .cart-unit-price {
+  font-size: var(--t-sm);
+  color: var(--ink-dim);
+  margin-top: var(--s-2);
+}
+.cart-qty {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin-top: var(--s-3);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-full);
+  padding: 2px;
+  width: fit-content;
+}
+.qty-btn {
+  width: 30px; height: 30px;
+  display: grid; place-items: center;
+  border-radius: var(--r-full);
+  color: var(--ink);
+  transition: background .2s;
+  font-size: var(--t-base);
+  line-height: 1;
+}
+.qty-btn:hover { background: var(--hover); }
+.cart-qty-value {
+  font-size: var(--t-sm);
+  min-width: 22px;
+  text-align: center;
+  font-weight: 500;
+}
+.cart-row-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--s-2);
+}
+.cart-row-price {
+  font-size: var(--t-lg);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.cart-row-price small { font-size: var(--t-xs); color: var(--ink-dim); font-weight: 400; margin-inline-start: 2px; }
+.cart-remove {
+  font-size: var(--t-xs);
+  color: var(--ink-mute);
+  text-decoration: underline;
+  transition: color .2s;
+}
+.cart-remove:hover { color: var(--ink); }
+
+.cart-summary {
+  padding: var(--s-5);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin-bottom: var(--s-5);
+}
+.cart-sum-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--t-sm);
+  color: var(--ink-dim);
+}
+.cart-sum-row.total {
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line);
+  font-size: var(--t-lg);
+  color: var(--ink);
+  font-weight: 500;
+}
+.cart-sum-note {
+  font-size: var(--t-xs);
+  color: var(--ink-mute);
+  line-height: 1.6;
+  padding-top: var(--s-2);
+  border-top: 1px dashed var(--line);
+}
+
+.cart-form {
+  padding: var(--s-5);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+.cart-form h3 {
+  font-size: var(--t-xl);
+  font-weight: 500;
+  letter-spacing: -.01em;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3);
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-field label {
+  font-size: var(--t-xs);
+  color: var(--ink-dim);
+  letter-spacing: .03em;
+}
+.form-field input, .form-field select, .form-field textarea {
+  width: 100%;
+  padding: var(--s-3) var(--s-4);
+  background: var(--bg);
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-md);
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--t-sm);
+  min-height: 46px;
+  transition: border-color .2s;
+}
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+  border-color: var(--ink);
+  outline: none;
+}
+.form-field textarea { min-height: 80px; resize: vertical; }
+.form-submit {
+  padding: var(--s-4) var(--s-5);
+  min-height: 52px;
+  font-size: var(--t-base);
+}
+.form-hint {
+  font-size: var(--t-xs);
+  color: var(--ink-mute);
+  line-height: 1.6;
+}
+
+.cart-empty {
+  padding: var(--s-8) var(--s-5);
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-4);
+  background: var(--bg-2);
+  border: 1px dashed var(--line-2);
+  border-radius: var(--r-xl);
+}
+.cart-empty.is-visible { display: flex; }
+.cart-empty-icon {
+  width: 80px; height: 80px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-full);
+  display: grid;
+  place-items: center;
+  color: var(--ink-mute);
+}
+.cart-empty-icon svg { width: 36px; height: 36px; }
+.cart-empty h3 { font-size: var(--t-xl); font-weight: 500; }
+.cart-empty p { font-size: var(--t-sm); color: var(--ink-dim); max-width: 40ch; }
+
+/* ==========================================================================
+   NEW — POLICIES SECTION INSIDE CONTACT
+   ========================================================================== */
+.policies-section {
+  margin-top: var(--s-8);
+  padding-top: var(--s-7);
+  border-top: 1px solid var(--line);
+}
+
+/* ==========================================================================
+   FOOTER — enhanced
+   ========================================================================== */
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  align-items: center;
+  text-align: center;
+}
+.footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-5);
+  justify-content: center;
+  align-items: center;
+}
+.footer-meta {
+  font-size: var(--t-xs);
+  color: var(--ink-mute);
+  letter-spacing: .03em;
+}
+
+/* ==========================================================================
+   RESPONSIVE for new components
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .why-chips { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .trust-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .cart-row { grid-template-columns: 90px 1fr; }
+  .cart-row-total { grid-column: 1 / -1; flex-direction: row; justify-content: space-between; padding-top: var(--s-3); border-top: 1px solid var(--line); }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .why-chips { grid-template-columns: 1fr; }
+  .hero-trust { flex-direction: column; gap: var(--s-2); }
+}
 </style>
+
+
 <body>
 <a href="#home" class="skip-link" data-ar="انتقل إلى المحتوى" data-en="Skip to content">انتقل إلى المحتوى</a>
 
@@ -1725,21 +2274,9 @@ ul { list-style: none; }
         </button>
       </li>
       <li class="nav-item">
-        <button class="nav-link" data-nav="about">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16.5v.5"/></svg>
-          <span class="nav-label" data-ar="عنّا" data-en="About">عنّا</span>
-        </button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" data-nav="why">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4 2 8L12 17l-6.5 4 2-8L2 9h7z"/></svg>
-          <span class="nav-label" data-ar="مايميزنا" data-en="Why us">مايميزنا</span>
-        </button>
-      </li>
-      <li class="nav-item">
-        <button class="nav-link" data-nav="process">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
-          <span class="nav-label" data-ar="طريقة عملنا" data-en="Process">طريقة عملنا</span>
+        <button class="nav-link" data-nav="story">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h12a4 4 0 014 4v12H8a4 4 0 01-4-4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          <span class="nav-label" data-ar="القصة" data-en="Our story">القصة</span>
         </button>
       </li>
 
@@ -1764,18 +2301,17 @@ ul { list-style: none; }
           <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
         </button>
         <ul class="nav-submenu">
-          <li><button class="nav-sublink" data-nav="service/ready" data-ar="أقلام جاهزة" data-en="Ready pens">أقلام جاهزة</button></li>
           <li><button class="nav-sublink" data-nav="service/bespoke" data-ar="قلم على مقاسك" data-en="Bespoke pen">قلم على مقاسك</button></li>
           <li><button class="nav-sublink" data-nav="service/engraving" data-ar="النقش والإهداء" data-en="Engraving">النقش والإهداء</button></li>
           <li><button class="nav-sublink" data-nav="service/corporate" data-ar="الإهداء المؤسسي" data-en="Corporate gifting">الإهداء المؤسسي</button></li>
-          <li><button class="nav-sublink" data-nav="service/workshops" data-ar="ورش الخط" data-en="Calligraphy workshops">ورش الخط</button></li>
+          <li><button class="nav-sublink" data-nav="service/workshops" data-ar="ورش الخط" data-en="Workshops">ورش الخط</button></li>
         </ul>
       </li>
 
       <li class="nav-item">
-        <button class="nav-link" data-nav="story">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h12a4 4 0 014 4v12H8a4 4 0 01-4-4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-          <span class="nav-label" data-ar="قصّتنا" data-en="Our story">قصّتنا</span>
+        <button class="nav-link" data-nav="blog">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg>
+          <span class="nav-label" data-ar="المدونة" data-en="Journal">المدونة</span>
         </button>
       </li>
       <li class="nav-item">
@@ -1785,9 +2321,10 @@ ul { list-style: none; }
         </button>
       </li>
       <li class="nav-item">
-        <button class="nav-link" data-nav="policies">
-          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>
-          <span class="nav-label" data-ar="السياسات" data-en="Policies">السياسات</span>
+        <button class="nav-link" data-nav="cart">
+          <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>
+          <span class="nav-label" data-ar="سلّتي" data-en="My cart">سلّتي</span>
+          <span class="nav-badge" id="navCartBadge" aria-live="polite">0</span>
         </button>
       </li>
     </ul>
@@ -1839,30 +2376,36 @@ ul { list-style: none; }
     <div class="home-hero">
       <div class="home-hero-content">
         <p class="hero-category" data-ar="متجر الأقلام السعودية الفاخرة" data-en="Saudi Luxury Pen Atelier">متجر الأقلام السعودية الفاخرة</p>
-        <span class="hero-kicker" data-ar="مصنوع في الرياض" data-en="Made in Riyadh">مصنوع في الرياض</span>
+        <span class="hero-kicker" data-ar="مصنوع في الرياض · بثلاثة خطّاطين سعوديين" data-en="Made in Riyadh · by three Saudi calligraphers">مصنوع في الرياض · بثلاثة خطّاطين سعوديين</span>
 
         <h1 class="hero-title" id="heroTitle">
           <span class="line" data-ar="حِبر يحفر" data-en="Ink that carves">حِبر يحفر</span>
           <span class="line" data-ar="أثرًا لا يُنسى" data-en="a trace never lost">أثرًا لا يُنسى</span>
         </h1>
 
-        <p class="hero-slogan" data-ar="حين يصبح للقلم هوية" data-en="When a pen earns its identity">حين يصبح للقلم هوية</p>
-
-        <p class="hero-desc"
-           data-ar="أقلام فاخرة بصناعة يدوية سعودية، بثلاث هويات مختلفة وأسعار تبدأ من 690 ر.س. ضمان مدى الحياة."
-           data-en="Luxury Saudi-made pens, three distinct identities, starting from 690 SAR. Lifetime warranty.">
-          أقلام فاخرة بصناعة يدوية سعودية، بثلاث هويات مختلفة وأسعار تبدأ من 690 ر.س. ضمان مدى الحياة.
+        <p class="hero-promise"
+           data-ar="قلم سعودي فاخر، يدوم جيلاً، مضمون مدى الحياة، يصلك خلال ٣-٥ أيام."
+           data-en="A luxury Saudi pen, built to last a generation, lifetime-guaranteed, delivered in 3-5 days.">
+          قلم سعودي فاخر، يدوم جيلاً، مضمون مدى الحياة، يصلك خلال ٣-٥ أيام.
         </p>
+
+        <p class="hero-slogan" data-ar="حين يصبح للقلم هوية" data-en="When a pen earns its identity">حين يصبح للقلم هوية</p>
 
         <div class="hero-cta">
           <button class="btn btn-primary" data-nav="shop">
-            <span data-ar="تصفّح الأقلام" data-en="Explore the pens">تصفّح الأقلام</span>
+            <span data-ar="تسوّق الأقلام — تبدأ من 690 ر.س" data-en="Shop pens — from 690 SAR">تسوّق الأقلام — تبدأ من 690 ر.س</span>
             <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </button>
-          <button class="btn btn-ghost" data-nav="process">
-            <span data-ar="طريقة صنعنا" data-en="How we make it">طريقة صنعنا</span>
+          <button class="btn btn-ghost" data-nav="story">
+            <span data-ar="شاهد كيف نصنعها" data-en="See how we make it">شاهد كيف نصنعها</span>
           </button>
         </div>
+
+        <ul class="hero-trust" aria-label="ضمانات">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-ar="تقسيط تابي وتمارا" data-en="Tabby & Tamara installments">تقسيط تابي وتمارا</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-ar="شحن مجاني داخل السعودية" data-en="Free shipping in Saudi">شحن مجاني داخل السعودية</span></li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span data-ar="إرجاع مجاني خلال ٣٠ يوم" data-en="Free 30-day returns">إرجاع مجاني خلال ٣٠ يوم</span></li>
+        </ul>
       </div>
 
       <div class="home-hero-visual" aria-hidden="true">
@@ -1905,7 +2448,7 @@ ul { list-style: none; }
         </p>
         <span class="highlight-link" data-ar="اكتشف المجموعة ←" data-en="Explore collection →">اكتشف المجموعة ←</span>
       </article>
-      <article class="highlight" data-nav="process">
+      <article class="highlight" data-nav="story">
         <div class="highlight-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
         <h3 data-ar="صبر الحرفة" data-en="Patient craft">صبر الحرفة</h3>
         <p data-ar="كل قلم يمر بأربع مراحل يدوية. لا نستعجل، لأن القلم يدوم."
@@ -1914,21 +2457,108 @@ ul { list-style: none; }
         </p>
         <span class="highlight-link" data-ar="طريقة صنعنا ←" data-en="How we make →">طريقة صنعنا ←</span>
       </article>
-      <article class="highlight" data-nav="why">
+      <article class="highlight" data-nav="story">
         <div class="highlight-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4M12 2a10 10 0 1010 10A10 10 0 0012 2z"/></svg></div>
         <h3 data-ar="ضمان مدى الحياة" data-en="Lifetime warranty">ضمان مدى الحياة</h3>
         <p data-ar="قلمك معنا طول العمر. صيانة مجانية متى ما احتاج."
            data-en="Your pen is ours for life. Free maintenance whenever needed.">
           قلمك معنا طول العمر. صيانة مجانية متى ما احتاج.
         </p>
-        <span class="highlight-link" data-ar="ليش مِحبرة ←" data-en="Why Mehbara →">ليش مِحبرة ←</span>
+        <span class="highlight-link" data-ar="قصة مِحبرة ←" data-en="The Mehbara story →">قصة مِحبرة ←</span>
       </article>
     </div>
 
+    <!-- WHY US — compact 6 pillars as chips -->
+    <section class="home-why" aria-labelledby="whyHeading">
+      <h2 id="whyHeading" class="section-title" data-ar="ست علامات تُميّز قلم مِحبرة" data-en="Six marks that set a Mehbara pen apart">ست علامات تُميّز قلم مِحبرة</h2>
+      <div class="why-chips">
+        <div class="why-chip"><span class="chip-num">01</span><strong data-ar="خامات أصيلة" data-en="Authentic materials">خامات أصيلة</strong><p data-ar="راتنج إيطالي، خشب زيتون طائفي" data-en="Italian resin, Taif olive wood">راتنج إيطالي، خشب زيتون طائفي</p></div>
+        <div class="why-chip"><span class="chip-num">02</span><strong data-ar="صناعة سعودية" data-en="Saudi-made">صناعة سعودية</strong><p data-ar="يدان سعودية على كل قلم" data-en="Saudi hands on every pen">يدان سعودية على كل قلم</p></div>
+        <div class="why-chip"><span class="chip-num">03</span><strong data-ar="توازن محسوب" data-en="Measured balance">توازن محسوب</strong><p data-ar="اختبار توازن يدوي قبل التسليم" data-en="Hand-balance tested">اختبار توازن يدوي قبل التسليم</p></div>
+        <div class="why-chip"><span class="chip-num">04</span><strong data-ar="ريشة مصقولة" data-en="Polished nib">ريشة مصقولة</strong><p data-ar="ثلاث مراحل صقل: خشن، وسط، حرير" data-en="3 polish stages: coarse, medium, silk">ثلاث مراحل صقل</p></div>
+        <div class="why-chip"><span class="chip-num">05</span><strong data-ar="حبر معتّق" data-en="Aged ink">حبر معتّق</strong><p data-ar="حبر سعودي ثابت، لا يبهت" data-en="Saudi-made stable ink">حبر سعودي ثابت، لا يبهت</p></div>
+        <div class="why-chip"><span class="chip-num">06</span><strong data-ar="ضمان مدى الحياة" data-en="Lifetime warranty">ضمان مدى الحياة</strong><p data-ar="صيانة مجانية متى احتاج" data-en="Free maintenance, forever">صيانة مجانية متى احتاج</p></div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS — social proof -->
+    <section class="home-testimonials" aria-labelledby="testHeading">
+      <h2 id="testHeading" class="section-title" data-ar="ما كتبوا لنا" data-en="What they wrote us">ما كتبوا لنا</h2>
+      <p class="section-lede" data-ar="مقتطفات من رسائل عملائنا — بأسمائهم وإذنهم."
+         data-en="Excerpts from our customers — by name, with their permission.">
+         مقتطفات من رسائل عملائنا — بأسمائهم وإذنهم.
+      </p>
+      <div class="testimonials-grid">
+        <figure class="testimonial">
+          <div class="stars-row" aria-label="5 نجوم">★★★★★</div>
+          <blockquote data-ar="«أول قلم حسّيته امتداد ليدي. الريشة تمشي على الورق بدون ما أحس بها، والعلبة الخشب خلّت زوجتي تقولي: ‹وين لقيت هذا؟›»"
+                      data-en="&ldquo;The first pen that felt like an extension of my hand. The nib glides without me noticing, and the wooden box had my wife asking: &lsquo;where did you find this?&rsquo;&rdquo;">
+            «أول قلم حسّيته امتداد ليدي. الريشة تمشي على الورق بدون ما أحس بها، والعلبة الخشب خلّت زوجتي تقولي: ‹وين لقيت هذا؟›»
+          </blockquote>
+          <figcaption><strong data-ar="خالد العبدالله" data-en="Khalid Al-Abdullah">خالد العبدالله</strong><span data-ar="مستشار قانوني · الرياض" data-en="Legal Counsel · Riyadh">مستشار قانوني · الرياض</span></figcaption>
+        </figure>
+        <figure class="testimonial">
+          <div class="stars-row" aria-label="5 نجوم">★★★★★</div>
+          <blockquote data-ar="«طلبت الروشن كهدية تخرّج لأخوي. النقش اللي طلبته طلع بخط ديواني رهيب، والورقة اللي كتبوها بالإيد داخل العلبة هي اللي بكّتني.»"
+                      data-en="&ldquo;I ordered Al-Roshen as a graduation gift for my brother. The engraving came in stunning Diwani script, and the handwritten card inside the box is what made me tear up.&rdquo;">
+            «طلبت الروشن كهدية تخرّج لأخوي. النقش اللي طلبته طلع بخط ديواني رهيب، والورقة اللي كتبوها بالإيد داخل العلبة هي اللي بكّتني.»
+          </blockquote>
+          <figcaption><strong data-ar="نورة السبيعي" data-en="Noura Al-Subaie">نورة السبيعي</strong><span data-ar="معلمة لغة عربية · جدة" data-en="Arabic teacher · Jeddah">معلمة لغة عربية · جدة</span></figcaption>
+        </figure>
+        <figure class="testimonial">
+          <div class="stars-row" aria-label="5 نجوم">★★★★★</div>
+          <blockquote data-ar="«طلبنا ٤٠ قلم نجد كهدية لأعضاء مجلس الإدارة. الجودة ثابتة، التسليم في وقته، والنقش الموحّد لشعار الشركة طلع بدقة مذهلة. تعامل مؤسسي نادر.»"
+                      data-en="&ldquo;We ordered 40 Najd pens as gifts for our board. Consistent quality, on-time delivery, and the unified corporate logo engraving was remarkably precise. Rare corporate professionalism.&rdquo;">
+            «طلبنا ٤٠ قلم نجد كهدية لأعضاء مجلس الإدارة. الجودة ثابتة، التسليم في وقته، والنقش الموحّد لشعار الشركة طلع بدقة مذهلة.»
+          </blockquote>
+          <figcaption><strong data-ar="عبدالعزيز الغامدي" data-en="Abdulaziz Al-Ghamdi">عبدالعزيز الغامدي</strong><span data-ar="مدير علاقات عامة · شركة مدرجة" data-en="PR Manager · Listed Company">مدير علاقات عامة · شركة مدرجة</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- TRUST — payment + Maroof + shipping -->
+    <section class="home-trust" aria-labelledby="trustHeading">
+      <h2 id="trustHeading" class="section-title" data-ar="ثقة وموثوقية" data-en="Trust & reliability">ثقة وموثوقية</h2>
+      <div class="trust-grid">
+        <div class="trust-cell">
+          <div class="trust-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l9 4v6c0 5-4 9-9 10-5-1-9-5-9-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h4 data-ar="موثّق في معروف" data-en="Verified on Maroof">موثّق في معروف</h4>
+          <p data-ar="السجل التجاري مُثبَت لدى وزارة التجارة السعودية."
+             data-en="Commercial registration verified with the Saudi Ministry of Commerce.">
+            السجل التجاري مُثبَت لدى وزارة التجارة السعودية.
+          </p>
+        </div>
+        <div class="trust-cell">
+          <div class="trust-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg></div>
+          <h4 data-ar="طرق دفع آمنة" data-en="Secure payment">طرق دفع آمنة</h4>
+          <div class="pay-badges">
+            <span class="pay-badge">مدى</span>
+            <span class="pay-badge">Visa</span>
+            <span class="pay-badge">Mastercard</span>
+            <span class="pay-badge">Apple Pay</span>
+            <span class="pay-badge">STC Pay</span>
+            <span class="pay-badge">tabby</span>
+            <span class="pay-badge">tamara</span>
+          </div>
+        </div>
+        <div class="trust-cell">
+          <div class="trust-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v6l9 4 9-4V7"/></svg></div>
+          <h4 data-ar="شحن عبر شركاء موثوقين" data-en="Trusted shipping partners">شحن عبر شركاء موثوقين</h4>
+          <div class="pay-badges">
+            <span class="pay-badge">سمسا</span>
+            <span class="pay-badge">أرامكس</span>
+            <span class="pay-badge">DHL</span>
+            <span class="pay-badge">البريد السعودي</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
     <div class="home-cta-band">
       <div>
         <h2 data-ar="ابدأ سطرك بقلمٍ يليق" data-en="Begin your line with a pen that deserves it">ابدأ سطرك بقلمٍ يليق</h2>
-        <p data-ar="ثلاث هويات · ضمان مدى الحياة · تقسيط عبر تابي" data-en="Three identities · Lifetime warranty · Tabby installments">ثلاث هويات · ضمان مدى الحياة · تقسيط عبر تابي</p>
+        <p data-ar="ثلاث هويات · ضمان مدى الحياة · تقسيط تابي وتمارا" data-en="Three identities · Lifetime warranty · Tabby & Tamara">ثلاث هويات · ضمان مدى الحياة · تقسيط تابي وتمارا</p>
       </div>
       <button class="btn btn-primary" data-nav="shop">
         <span data-ar="تسوق الآن" data-en="Shop now">تسوق الآن</span>
@@ -1937,37 +2567,32 @@ ul { list-style: none; }
     </div>
   </section>
 
-  <!-- ========================== ABOUT PAGE ========================== -->
-  <section class="page" id="page-about" aria-labelledby="aboutTitle">
+  <!-- ========================== STORY PAGE (unified: about + story + process) ========================== -->
+  <section class="page" id="page-story" aria-labelledby="storyTitle">
     <div class="page-head">
-      <div class="page-kicker" data-ar="عنّا" data-en="About">عنّا</div>
-      <h1 class="page-title" id="aboutTitle" data-ar="مِحبرة — من الرياض، بصبرٍ وأناة" data-en="Mehbara — from Riyadh, with patience">مِحبرة — من الرياض، بصبرٍ وأناة</h1>
-      <p class="page-lede" data-ar="نحن ورشة سعودية متخصصة في صناعة الأقلام الفاخرة يدوياً. نؤمن أن القلم أكثر من أداة — هو امتداد ليد صاحبه، وأثر يبقى في السطور."
-         data-en="We're a Saudi atelier crafting luxury pens by hand. We believe a pen is more than a tool — it's an extension of its owner's hand, a trace that endures.">
-        نحن ورشة سعودية متخصصة في صناعة الأقلام الفاخرة يدوياً. نؤمن أن القلم أكثر من أداة — هو امتداد ليد صاحبه، وأثر يبقى في السطور.
+      <div class="page-kicker" data-ar="القصة" data-en="Our story">القصة</div>
+      <h1 class="page-title" id="storyTitle" data-ar="من سطرٍ أوّل إلى حرفةٍ كاملة" data-en="From a first line to a full craft">من سطرٍ أوّل إلى حرفةٍ كاملة</h1>
+      <p class="page-lede" data-ar="ثلاثة سعوديين، ورشة في الملز، وسؤال بسيط: ليش ما في قلم فاخر يحمل هوية المملكة؟ هذي قصة كيف صار السؤال جواباً."
+         data-en="Three Saudis, a workshop in Al-Malaz, and one simple question: why isn\'t there a luxury pen carrying our identity? This is the story of how that question became an answer.">
+        ثلاثة سعوديين، ورشة في الملز، وسؤال بسيط: ليش ما في قلم فاخر يحمل هوية المملكة؟ هذي قصة كيف صار السؤال جواباً.
       </p>
     </div>
+
     <div class="story-content">
-      <h3 data-ar="من نحن" data-en="Who we are">من نحن</h3>
-      <p data-ar="مِحبرة مشروع ولد في الرياض على يد فريق من الخطّاطين والحرفيين السعوديين الذين رأوا فرصة لإعادة تعريف القلم الفاخر من منظور محلي. ليست مجرد صناعة — هي إحياء لحرفة، وربط بين الأصيل والمعاصر."
-         data-en="Mehbara was born in Riyadh from a team of Saudi calligraphers and artisans who saw an opportunity to redefine the luxury pen from a local perspective. Not just manufacture — a revival of craft, a bridge between the authentic and the contemporary.">
-        مِحبرة مشروع ولد في الرياض على يد فريق من الخطّاطين والحرفيين السعوديين الذين رأوا فرصة لإعادة تعريف القلم الفاخر من منظور محلي. ليست مجرد صناعة — هي إحياء لحرفة، وربط بين الأصيل والمعاصر.
+      <h3 data-ar="البداية — ٢٠١٢" data-en="The beginning — 2012">البداية — ٢٠١٢</h3>
+      <p data-ar="في ورشة صغيرة في حي الملز بالرياض، اجتمع ثلاثة: خطّاط عرف الخط منذ طفولته، حرفي تعلّم الخراطة في تركيا، ومصمم درس الصناعات اليدوية في إيطاليا. كانت الفكرة بسيطة: قلم يليق بالخط العربي."
+         data-en="In a small workshop in Riyadh\'s Al-Malaz, three came together: a calligrapher who knew the script from childhood, a craftsman who studied lathe-work in Turkey, and a designer who studied handcrafts in Italy. The idea was simple: a pen worthy of Arabic script.">
+        في ورشة صغيرة في حي الملز بالرياض، اجتمع ثلاثة: خطّاط عرف الخط منذ طفولته، حرفي تعلّم الخراطة في تركيا، ومصمم درس الصناعات اليدوية في إيطاليا. كانت الفكرة بسيطة: قلم يليق بالخط العربي.
       </p>
 
-      <h3 data-ar="رؤيتنا" data-en="Our vision">رؤيتنا</h3>
-      <p data-ar="أن يكون القلم السعودي الفاخر حاضراً في مكاتب القادة والمبدعين، حاملاً هوية بلاده، مطمئناً إلى جودة صناعته، ملتزماً برعاية صاحبه طول العمر."
-         data-en="For a luxury Saudi pen to stand on the desks of leaders and creatives — carrying its homeland's identity, assured in its craftsmanship, committed to caring for its owner for life.">
-        أن يكون القلم السعودي الفاخر حاضراً في مكاتب القادة والمبدعين، حاملاً هوية بلاده، مطمئناً إلى جودة صناعته، ملتزماً برعاية صاحبه طول العمر.
-      </p>
-
-      <blockquote data-ar="«نحن لا نصنع الأقلام بالمصنع — نصنعها بالصبر»" data-en="&ldquo;We don't factory-make pens — we patience-make them.&rdquo;">
-        «نحن لا نصنع الأقلام بالمصنع — نصنعها بالصبر»
+      <blockquote data-ar="«القلم ليس أداة، هو امتداد ليدك. ومن يحترم يده، يستحق قلماً يحترمها.»" data-en="&ldquo;A pen is not a tool — it\'s an extension of your hand. And those who respect their hand deserve a pen that respects it.&rdquo;">
+        «القلم ليس أداة، هو امتداد ليدك. ومن يحترم يده، يستحق قلماً يحترمها.»
       </blockquote>
 
-      <h3 data-ar="التزامنا" data-en="Our commitment">التزامنا</h3>
-      <p data-ar="كل قلم يخرج من مِحبرة يحمل معه وعدين: الأول أن يكون مصنوعاً بأفضل خامة وصلت إلينا، والثاني أن يبقى بين يديك ما دمت ترغب — بضمان صيانة مدى الحياة في مشغلنا."
-         data-en="Every pen leaving Mehbara carries two promises: that it's made with the finest material we could source, and that it stays in your hands as long as you wish — backed by lifetime maintenance at our workshop.">
-        كل قلم يخرج من مِحبرة يحمل معه وعدين: الأول أن يكون مصنوعاً بأفضل خامة وصلت إلينا، والثاني أن يبقى بين يديك ما دمت ترغب — بضمان صيانة مدى الحياة في مشغلنا.
+      <h3 data-ar="النمو — ٢٠١٨" data-en="Growth — 2018">النمو — ٢٠١٨</h3>
+      <p data-ar="بعد ست سنوات من التعلّم والتجربة، أطلقنا أول ثلاثية: نجد، الرَّوشن، والسّمراء. كل قلم حمل جزءاً من هويتنا: نجد للصحراء، الرَّوشن للحجاز، والسّمراء للعاصمة الحديثة."
+         data-en="After six years of learning and experimenting, we launched our first trilogy: Najd, Al-Roshen, and Al-Samra. Each pen carried a piece of our identity.">
+        بعد ست سنوات من التعلّم والتجربة، أطلقنا أول ثلاثية: نجد، الرَّوشن، والسّمراء. كل قلم حمل جزءاً من هويتنا: نجد للصحراء، الرَّوشن للحجاز، والسّمراء للعاصمة الحديثة.
       </p>
 
       <div class="story-stats">
@@ -1976,81 +2601,14 @@ ul { list-style: none; }
         <div class="stat"><div class="val">7</div><div class="lbl" data-ar="خطّاط" data-en="Calligraphers">خطّاط</div></div>
         <div class="stat"><div class="val">98<span>%</span></div><div class="lbl" data-ar="يوصون بنا" data-en="Recommend us">يوصون بنا</div></div>
       </div>
-    </div>
-  </section>
 
-  <!-- ========================== WHY-US PAGE ========================== -->
-  <section class="page" id="page-why" aria-labelledby="whyTitle">
-    <div class="page-head">
-      <div class="page-kicker" data-ar="مايميزنا" data-en="Why us">مايميزنا</div>
-      <h1 class="page-title" id="whyTitle" data-ar="قلم مرّت عليه يدٌ أمينة قبل يدك" data-en="A pen touched by a skilled hand before yours">قلم مرّت عليه يدٌ أمينة قبل يدك</h1>
-      <p class="page-lede" data-ar="ستة التزامات نعيش بها كل قلم. لا تسويق، ولا شعارات — هذي طريقتنا في العمل."
-         data-en="Six commitments we live by with every pen. No marketing, no slogans — this is simply how we work.">
-        ستة التزامات نعيش بها كل قلم. لا تسويق، ولا شعارات — هذي طريقتنا في العمل.
-      </p>
-    </div>
-    <div class="why-grid">
-      <article class="why-card">
-        <div class="num">01</div>
-        <h3 data-ar="خامات أصيلة" data-en="Authentic materials">خامات أصيلة</h3>
-        <p data-ar="راتنج إيطالي، خشب الزيتون، ومعادن مختارة يدويًا. كل خامة تُعدّ لوحدها."
-           data-en="Italian resin, olive wood, hand-picked metals. Every material prepared on its own.">
-          راتنج إيطالي، خشب الزيتون، ومعادن مختارة يدويًا. كل خامة تُعدّ لوحدها.
-        </p>
-      </article>
-      <article class="why-card">
-        <div class="num">02</div>
-        <h3 data-ar="صناعة سعودية" data-en="Saudi-made">صناعة سعودية</h3>
-        <p data-ar="من الرياض، خطّاطون وحرفيون سعوديون يشتغلون على كل قلم بصبر لا يُقدَّر بسعر."
-           data-en="From Riyadh — Saudi calligraphers and artisans perfecting each pen with uncommon patience.">
-          من الرياض، خطّاطون وحرفيون سعوديون يشتغلون على كل قلم بصبر لا يُقدَّر بسعر.
-        </p>
-      </article>
-      <article class="why-card">
-        <div class="num">03</div>
-        <h3 data-ar="توازن محسوب" data-en="Measured balance">توازن محسوب</h3>
-        <p data-ar="كل قلم يخرج من عندنا بعد اختبار توازن يدوي. يدك لا تتعب، وحرفك لا يرتعش."
-           data-en="Every pen leaves us only after a hand-balance test. Your hand doesn't tire, your letters don't tremble.">
-          كل قلم يخرج من عندنا بعد اختبار توازن يدوي. يدك لا تتعب، وحرفك لا يرتعش.
-        </p>
-      </article>
-      <article class="why-card">
-        <div class="num">04</div>
-        <h3 data-ar="ريشة مصقولة" data-en="Polished nib">ريشة مصقولة</h3>
-        <p data-ar="ريشة تُصقل على مراحل: خشن، وسط، ثم حرير. تمشي على الورق كما يمشي الماء على الرمل."
-           data-en="Our nibs are polished in stages — coarse, medium, silk. They glide like water on sand.">
-          ريشة تُصقل على مراحل: خشن، وسط، ثم حرير. تمشي على الورق كما يمشي الماء على الرمل.
-        </p>
-      </article>
-      <article class="why-card">
-        <div class="num">05</div>
-        <h3 data-ar="حبر معتّق" data-en="Aged ink">حبر معتّق</h3>
-        <p data-ar="حبر سعودي الصنع، معتّق ومثبّت. لا يبهت مع الوقت، ولا يسيل بين يديك."
-           data-en="Saudi-made ink, aged and stabilized. It doesn't fade with time, nor bleed in your hand.">
-          حبر سعودي الصنع، معتّق ومثبّت. لا يبهت مع الوقت، ولا يسيل بين يديك.
-        </p>
-      </article>
-      <article class="why-card">
-        <div class="num">06</div>
-        <h3 data-ar="ضمان مدى الحياة" data-en="Lifetime warranty">ضمان مدى الحياة</h3>
-        <p data-ar="قلمك معنا طول العمر. يعود لمشغلنا للصيانة مجانًا متى احتاج، بلا أسئلة."
-           data-en="Your pen is ours for life. Free maintenance at our workshop whenever needed — no questions asked.">
-          قلمك معنا طول العمر. يعود لمشغلنا للصيانة مجانًا متى احتاج، بلا أسئلة.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <!-- ========================== PROCESS PAGE ========================== -->
-  <section class="page" id="page-process" aria-labelledby="processTitle">
-    <div class="page-head">
-      <div class="page-kicker" data-ar="طريقة عملنا" data-en="Our process">طريقة عملنا</div>
-      <h1 class="page-title" id="processTitle" data-ar="أربع مراحل — من الفكرة إلى الحبر" data-en="Four stages — from idea to ink">أربع مراحل — من الفكرة إلى الحبر</h1>
-      <p class="page-lede" data-ar="كل قلم في مِحبرة يمر بأربع مراحل، كلها يدوية، كلها بصبر، وكلها تحت إشراف خطّاط."
+      <h3 data-ar="طريقة عملنا — أربع مراحل" data-en="Our process — four stages">طريقة عملنا — أربع مراحل</h3>
+      <p data-ar="كل قلم في مِحبرة يمر بأربع مراحل، كلها يدوية، كلها بصبر، وكلها تحت إشراف خطّاط."
          data-en="Every Mehbara pen passes through four stages — all hand-crafted, patient, under the eye of a calligrapher.">
         كل قلم في مِحبرة يمر بأربع مراحل، كلها يدوية، كلها بصبر، وكلها تحت إشراف خطّاط.
       </p>
     </div>
+
     <div class="process-steps">
       <article class="process-step">
         <div class="step-num">01</div>
@@ -2067,9 +2625,9 @@ ul { list-style: none; }
         <div class="step-num">02</div>
         <div>
           <h3 data-ar="الخراطة باليد — خرطة بعد خرطة" data-en="Turned by hand — cut by cut">الخراطة باليد — خرطة بعد خرطة</h3>
-          <p data-ar="نخرط كل قلم على المِخرطة يدويًا. كل حركة محسوبة، وكل انحناءة تتبع يد الحرفي لا الآلة. القلم يخرج من المِخرطة وله شكل، ويعود ليخرج مرة ثانية وله روح."
-             data-en="Each pen is hand-turned on the lathe. Every motion measured, every curve following the artisan's hand. A pen leaves the lathe with a shape, returns, and leaves again with a soul.">
-            نخرط كل قلم على المِخرطة يدويًا. كل حركة محسوبة، وكل انحناءة تتبع يد الحرفي لا الآلة. القلم يخرج من المِخرطة وله شكل، ويعود ليخرج مرة ثانية وله روح.
+          <p data-ar="نخرط كل قلم على المِخرطة يدويًا. كل حركة محسوبة، وكل انحناءة تتبع يد الحرفي لا الآلة."
+             data-en="Each pen is hand-turned on the lathe. Every motion measured, every curve following the artisan\'s hand.">
+            نخرط كل قلم على المِخرطة يدويًا. كل حركة محسوبة، وكل انحناءة تتبع يد الحرفي لا الآلة.
           </p>
         </div>
         <div class="process-visual" aria-hidden="true"><svg viewBox="0 0 200 200"><rect x="40" y="90" width="120" height="20" rx="10" fill="currentColor"/><line x1="30" y1="100" x2="170" y2="100" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/><circle cx="100" cy="100" r="30" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></div>
@@ -2078,9 +2636,9 @@ ul { list-style: none; }
         <div class="step-num">03</div>
         <div>
           <h3 data-ar="الريشة — تُصقل على ثلاث درجات" data-en="The nib — polished in three grades">الريشة — تُصقل على ثلاث درجات</h3>
-          <p data-ar="الريشة تمرّ بثلاث مراحل صقل: خشن لضبط الزوايا، وسط لتنعيم الحواف، وحرير للمسة الأخيرة. لا تخرج ريشة من عندنا إلا بعد أن نكتب بها جملة كاملة ونختبر انسيابها على الورق."
-             data-en="Each nib passes through three polishing stages: coarse for angles, medium for edges, silk for the final touch. No nib leaves us until we've written a full sentence with it.">
-            الريشة تمرّ بثلاث مراحل صقل: خشن لضبط الزوايا، وسط لتنعيم الحواف، وحرير للمسة الأخيرة. لا تخرج ريشة من عندنا إلا بعد أن نكتب بها جملة كاملة ونختبر انسيابها على الورق.
+          <p data-ar="ثلاث مراحل صقل: خشن لضبط الزوايا، وسط لتنعيم الحواف، وحرير للمسة الأخيرة. لا تخرج ريشة من عندنا إلا بعد أن نكتب بها جملة كاملة."
+             data-en="Three polishing stages: coarse for angles, medium for edges, silk for the final touch. No nib leaves us until we\'ve written a full sentence with it.">
+            ثلاث مراحل صقل: خشن لضبط الزوايا، وسط لتنعيم الحواف، وحرير للمسة الأخيرة. لا تخرج ريشة من عندنا إلا بعد أن نكتب بها جملة كاملة.
           </p>
         </div>
         <div class="process-visual" aria-hidden="true"><svg viewBox="0 0 200 200"><path d="M70 40 L130 40 L100 180 Z" fill="currentColor" opacity=".85"/><line x1="100" y1="60" x2="100" y2="170" stroke="var(--bg)" stroke-width="1.5"/><circle cx="100" cy="90" r="4" fill="var(--bg)"/></svg></div>
@@ -2097,15 +2655,28 @@ ul { list-style: none; }
         <div class="process-visual" aria-hidden="true"><svg viewBox="0 0 200 200"><rect x="40" y="60" width="120" height="100" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="90" x2="160" y2="90" stroke="currentColor" stroke-width="1"/><circle cx="100" cy="75" r="6" fill="currentColor"/></svg></div>
       </article>
     </div>
+
+    <div class="home-cta-band" style="margin-top: var(--s-7);">
+      <div>
+        <h2 data-ar="جاهز لقلمك الأول؟" data-en="Ready for your first pen?">جاهز لقلمك الأول؟</h2>
+        <p data-ar="اختر من ثلاثة أقلام بهويات مختلفة" data-en="Choose from three pens, three identities">اختر من ثلاثة أقلام بهويات مختلفة</p>
+      </div>
+      <button class="btn btn-primary" data-nav="shop">
+        <span data-ar="تصفّح الأقلام" data-en="Explore the pens">تصفّح الأقلام</span>
+        <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
   </section>
+
+
   <!-- ========================== SHOP PAGE ========================== -->
   <section class="page" id="page-shop" aria-labelledby="shopTitle">
     <div class="page-head">
       <div class="page-kicker" data-ar="المتجر" data-en="Shop">المتجر</div>
       <h1 class="page-title" id="shopTitle" data-ar="ثلاثة أقلام — ثلاث قصص" data-en="Three pens — three stories">ثلاثة أقلام — ثلاث قصص</h1>
-      <p class="page-lede" data-ar="كل قلم يحمل اسمًا، وروحًا، وطريقة كتابة تخصّه. جميع أسعارنا شاملة ضريبة القيمة المضافة، ومع كل قلم: علبة خشب، ضمان مدى الحياة، وتقسيط عبر تابي."
-         data-en="Each pen carries a name, a soul, and its own way of writing. All prices include VAT. Every pen comes with an olive-wood box, lifetime warranty, and Tabby installments.">
-        كل قلم يحمل اسمًا، وروحًا، وطريقة كتابة تخصّه. جميع أسعارنا شاملة ضريبة القيمة المضافة، ومع كل قلم: علبة خشب، ضمان مدى الحياة، وتقسيط عبر تابي.
+      <p class="page-lede" data-ar="كل قلم يحمل اسمًا، وروحًا، وطريقة كتابة تخصّه. الأسعار شاملة ضريبة القيمة المضافة. مع كل قلم: علبة خشب، ضمان مدى الحياة، وتقسيط تابي أو تمارا."
+         data-en="Each pen carries a name, a soul, and its own way of writing. All prices include VAT. Every pen comes with an olive-wood box, lifetime warranty, and Tabby or Tamara installments.">
+        كل قلم يحمل اسمًا، وروحًا، وطريقة كتابة تخصّه. الأسعار شاملة ضريبة القيمة المضافة. مع كل قلم: علبة خشب، ضمان مدى الحياة، وتقسيط تابي أو تمارا.
       </p>
     </div>
 
@@ -2126,13 +2697,11 @@ ul { list-style: none; }
         <div class="pen-body">
           <h3 class="pen-name">نجد<small>Najd · Classic</small></h3>
           <p class="pen-desc" data-ar="قلم حبر سائل بجسم من الراتنج وريشة ذهبية عيار 14."
-             data-en="Fountain pen with resin body and 14k gold nib.">
-            قلم حبر سائل بجسم من الراتنج وريشة ذهبية عيار 14.
-          </p>
+             data-en="Fountain pen with resin body and 14k gold nib.">قلم حبر سائل بجسم من الراتنج وريشة ذهبية عيار 14.</p>
           <div class="pen-foot">
             <div class="pen-price">
               <span>1,250 <span class="currency" data-ar="ر.س" data-en="SAR">ر.س</span></span>
-              <span class="tabby" data-ar="4 × 312.50 ر.س — تابي" data-en="4 × 312.50 SAR — Tabby">4 × 312.50 ر.س — تابي</span>
+              <span class="tabby" data-ar="4 × 312.50 — تابي" data-en="4 × 312.50 SAR — Tabby">4 × 312.50 — تابي</span>
             </div>
             <button class="pen-buy" data-add-to-cart="najd" aria-label="أضف نجد إلى السلة">
               <span data-ar="أضف للسلة" data-en="Add">أضف للسلة</span>
@@ -2158,13 +2727,11 @@ ul { list-style: none; }
         <div class="pen-body">
           <h3 class="pen-name">الرَّوشن<small>Al-Roshen · Signature</small></h3>
           <p class="pen-desc" data-ar="مستوحى من نوافذ الحجاز القديمة. جسم خشبي مزخرف يدويًا."
-             data-en="Inspired by old Hijazi windows. Hand-engraved wooden body.">
-            مستوحى من نوافذ الحجاز القديمة. جسم خشبي مزخرف يدويًا.
-          </p>
+             data-en="Inspired by old Hijazi windows. Hand-engraved wooden body.">مستوحى من نوافذ الحجاز القديمة. جسم خشبي مزخرف يدويًا.</p>
           <div class="pen-foot">
             <div class="pen-price">
               <span>1,850 <span class="currency" data-ar="ر.س" data-en="SAR">ر.س</span></span>
-              <span class="tabby" data-ar="4 × 462.50 ر.س — تابي" data-en="4 × 462.50 SAR — Tabby">4 × 462.50 ر.س — تابي</span>
+              <span class="tabby" data-ar="4 × 462.50 — تابي" data-en="4 × 462.50 SAR — Tabby">4 × 462.50 — تابي</span>
             </div>
             <button class="pen-buy" data-add-to-cart="roshen" aria-label="أضف الروشن إلى السلة">
               <span data-ar="أضف للسلة" data-en="Add">أضف للسلة</span>
@@ -2191,13 +2758,11 @@ ul { list-style: none; }
         <div class="pen-body">
           <h3 class="pen-name">السّمراء<small>Al-Samra · Contemporary</small></h3>
           <p class="pen-desc" data-ar="قلم رولر بول بتصميم نحيف معاصر. جسم ألمنيوم بطلاء حريري."
-             data-en="Contemporary rollerball. Slim aluminium body with silk finish.">
-            قلم رولر بول بتصميم نحيف معاصر. جسم ألمنيوم بطلاء حريري.
-          </p>
+             data-en="Contemporary rollerball. Slim aluminium body with silk finish.">قلم رولر بول بتصميم نحيف معاصر. جسم ألمنيوم بطلاء حريري.</p>
           <div class="pen-foot">
             <div class="pen-price">
               <span>690 <span class="currency" data-ar="ر.س" data-en="SAR">ر.س</span></span>
-              <span class="tabby" data-ar="4 × 172.50 ر.س — تابي" data-en="4 × 172.50 SAR — Tabby">4 × 172.50 ر.س — تابي</span>
+              <span class="tabby" data-ar="4 × 172.50 — تابي" data-en="4 × 172.50 SAR — Tabby">4 × 172.50 — تابي</span>
             </div>
             <button class="pen-buy" data-add-to-cart="samra" aria-label="أضف السمراء إلى السلة">
               <span data-ar="أضف للسلة" data-en="Add">أضف للسلة</span>
@@ -2208,7 +2773,7 @@ ul { list-style: none; }
     </div>
   </section>
 
-  <!-- ========================== PRODUCT PAGE (dynamic content) ========================== -->
+  <!-- ========================== PRODUCT PAGE (dynamic) ========================== -->
   <section class="page" id="page-product" aria-labelledby="productTitle">
     <button class="back-link" data-nav="shop">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
@@ -2239,7 +2804,7 @@ ul { list-style: none; }
       </div>
       <div class="trust-item">
         <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18"/></svg>
-        <span data-ar="تقسيط عبر تابي بدون فوائد" data-en="Interest-free Tabby installments">تقسيط عبر تابي بدون فوائد</span>
+        <span data-ar="تابي · تمارا — بدون فوائد" data-en="Tabby · Tamara — interest-free">تابي · تمارا — بدون فوائد</span>
       </div>
       <div class="trust-item">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v6l9 4 9-4V7"/></svg>
@@ -2253,22 +2818,14 @@ ul { list-style: none; }
     <div class="page-head">
       <div class="page-kicker" data-ar="الخدمات" data-en="Services">الخدمات</div>
       <h1 class="page-title" id="servicesTitle" data-ar="أكثر من قلم — تجربة كتابة كاملة" data-en="More than a pen — a complete writing experience">أكثر من قلم — تجربة كتابة كاملة</h1>
-      <p class="page-lede" data-ar="خمس خدمات نقدمها: من القلم الجاهز، إلى القلم المصنوع خصيصاً على مقاس يدك، إلى ورش الخط الشهرية."
-         data-en="Five services we offer: from ready pens, to bespoke pens made to the measure of your hand, to monthly calligraphy workshops.">
-        خمس خدمات نقدمها: من القلم الجاهز، إلى القلم المصنوع خصيصاً على مقاس يدك، إلى ورش الخط الشهرية.
+      <p class="page-lede" data-ar="أربع خدمات نقدمها: من القلم المصنوع على مقاس يدك، إلى النقش، إلى الإهداء المؤسسي، إلى ورش الخط الشهرية."
+         data-en="Four services: from pens made to your hand, to engraving, corporate gifting, and monthly calligraphy workshops.">
+        أربع خدمات نقدمها: من القلم المصنوع على مقاس يدك، إلى النقش، إلى الإهداء المؤسسي، إلى ورش الخط الشهرية.
       </p>
     </div>
     <div class="services-list">
-      <article class="service-row" data-nav="service/ready">
-        <div class="num">01</div>
-        <div>
-          <h3 data-ar="أقلام جاهزة" data-en="Ready pens">أقلام جاهزة</h3>
-          <p data-ar="مجموعة أقلامنا الثابتة، جاهزة للشحن، بثلاث هويات مختلفة."
-             data-en="Our signature collection, ready to ship, in three distinct identities.">مجموعة أقلامنا الثابتة، جاهزة للشحن، بثلاث هويات مختلفة.</p>
-        </div>
-      </article>
       <article class="service-row" data-nav="service/bespoke">
-        <div class="num">02</div>
+        <div class="num">01</div>
         <div>
           <h3 data-ar="قلم على مقاسك" data-en="Bespoke pen">قلم على مقاسك</h3>
           <p data-ar="نصنع لك قلمًا واحدًا لا يتكرّر: الخامة، النقش، الوزن، والريشة."
@@ -2276,7 +2833,7 @@ ul { list-style: none; }
         </div>
       </article>
       <article class="service-row" data-nav="service/engraving">
-        <div class="num">03</div>
+        <div class="num">02</div>
         <div>
           <h3 data-ar="النقش والإهداء" data-en="Engraving & gifting">النقش والإهداء</h3>
           <p data-ar="اسمك، تاريخك، آيةٌ تحبها، أو بيت شعر — ننقشها بخطٍ سعودي."
@@ -2284,7 +2841,7 @@ ul { list-style: none; }
         </div>
       </article>
       <article class="service-row" data-nav="service/corporate">
-        <div class="num">04</div>
+        <div class="num">03</div>
         <div>
           <h3 data-ar="الإهداء المؤسسي" data-en="Corporate gifting">الإهداء المؤسسي</h3>
           <p data-ar="أقلام مخصصة للمؤسسات والمناسبات، بعلبة مصمّمة ونقش موحّد."
@@ -2292,7 +2849,7 @@ ul { list-style: none; }
         </div>
       </article>
       <article class="service-row" data-nav="service/workshops">
-        <div class="num">05</div>
+        <div class="num">04</div>
         <div>
           <h3 data-ar="ورش الخط" data-en="Workshops">ورش الخط</h3>
           <p data-ar="ورش شهرية في الرياض مع خطّاطين سعوديين."
@@ -2315,50 +2872,113 @@ ul { list-style: none; }
     <div class="service-detail" id="serviceDetail"></div>
   </section>
 
-  <!-- ========================== STORY PAGE ========================== -->
-  <section class="page" id="page-story" aria-labelledby="storyTitle">
+  <!-- ========================== BLOG LISTING ========================== -->
+  <section class="page" id="page-blog" aria-labelledby="blogTitle">
     <div class="page-head">
-      <div class="page-kicker" data-ar="قصّتنا" data-en="Our story">قصّتنا</div>
-      <h1 class="page-title" id="storyTitle" data-ar="من سطرٍ أوّل إلى حرفةٍ كاملة" data-en="From a first line to a full craft">من سطرٍ أوّل إلى حرفةٍ كاملة</h1>
+      <div class="page-kicker" data-ar="المدونة" data-en="Journal">المدونة</div>
+      <h1 class="page-title" id="blogTitle" data-ar="من دفتر الحبر" data-en="From the ink notebook">من دفتر الحبر</h1>
+      <p class="page-lede" data-ar="مقالات عن فن الخط، العناية بالأقلام، وقصص الحرفيين. مقال جديد كل شهر."
+         data-en="Articles about calligraphy, pen care, and artisans' stories. A new piece every month.">
+        مقالات عن فن الخط، العناية بالأقلام، وقصص الحرفيين. مقال جديد كل شهر.
+      </p>
     </div>
-    <div class="story-content">
-      <p data-ar="بدأت مِحبرة من سؤال بسيط: لماذا لا يوجد قلم فاخر يحمل هوية سعودية؟ كنا نشتري الأقلام الفاخرة من باريس وجنيف ونيويورك، بينما الخط العربي الأصل منّا."
-         data-en="Mehbara began with a simple question: why is there no luxury pen carrying a Saudi identity? We were buying our luxury pens from Paris, Geneva, and New York — while Arabic calligraphy originated from us.">
-        بدأت مِحبرة من سؤال بسيط: لماذا لا يوجد قلم فاخر يحمل هوية سعودية؟ كنا نشتري الأقلام الفاخرة من باريس وجنيف ونيويورك، بينما الخط العربي الأصل منّا.
-      </p>
+    <div class="blog-grid">
+      <article class="blog-card" data-nav="post/choose-nib">
+        <div class="blog-card-tag" data-ar="دليل" data-en="Guide">دليل</div>
+        <h3 data-ar="كيف تختار ريشتك الأولى؟" data-en="How to choose your first nib">كيف تختار ريشتك الأولى؟</h3>
+        <p data-ar="دليل عملي لاختيار الريشة المناسبة لخطك. F، M، B، Stub — أيهم يناسب يدك؟"
+           data-en="A practical guide to choosing the right nib. F, M, B, Stub — which one?">
+          دليل عملي لاختيار الريشة المناسبة لخطك. F، M، B، Stub — أيهم يناسب يدك؟
+        </p>
+        <div class="blog-card-meta">
+          <span data-ar="٨ دقائق قراءة" data-en="8 min read">٨ دقائق قراءة</span>
+          <span aria-hidden="true">·</span>
+          <span data-ar="مارس ٢٠٢٦" data-en="March 2026">مارس ٢٠٢٦</span>
+        </div>
+      </article>
 
-      <h3 data-ar="البداية — ٢٠١٢" data-en="The beginning — 2012">البداية — ٢٠١٢</h3>
-      <p data-ar="في ورشة صغيرة في حي الملز بالرياض، اجتمع ثلاثة: خطّاط عرف الخط منذ طفولته، حرفي تعلّم الخراطة في تركيا، ومصمم درس الصناعات اليدوية في إيطاليا. كانت الفكرة بسيطة: قلم يليق بالخط العربي."
-         data-en="In a small workshop in Riyadh's Al Malaz, three came together: a calligrapher who knew the script from childhood, a craftsman who studied lathe-work in Turkey, and a designer who studied handcrafts in Italy. The idea was simple: a pen worthy of Arabic script.">
-        في ورشة صغيرة في حي الملز بالرياض، اجتمع ثلاثة: خطّاط عرف الخط منذ طفولته، حرفي تعلّم الخراطة في تركيا، ومصمم درس الصناعات اليدوية في إيطاليا. كانت الفكرة بسيطة: قلم يليق بالخط العربي.
-      </p>
+      <article class="blog-card" data-nav="post/saudi-calligraphy">
+        <div class="blog-card-tag" data-ar="تاريخ" data-en="History">تاريخ</div>
+        <h3 data-ar="تاريخ الخط السعودي" data-en="History of Saudi calligraphy">تاريخ الخط السعودي</h3>
+        <p data-ar="رحلة الخط العربي في الجزيرة العربية، وأشهر خطّاطي المملكة، وكيف أثّر على هويتنا البصرية."
+           data-en="Arabic calligraphy's journey in the Peninsula and its influence on our visual identity.">
+          رحلة الخط العربي في الجزيرة العربية، وأشهر خطّاطي المملكة، وكيف أثّر على هويتنا البصرية.
+        </p>
+        <div class="blog-card-meta">
+          <span data-ar="١٢ دقيقة قراءة" data-en="12 min read">١٢ دقيقة قراءة</span>
+          <span aria-hidden="true">·</span>
+          <span data-ar="فبراير ٢٠٢٦" data-en="February 2026">فبراير ٢٠٢٦</span>
+        </div>
+      </article>
 
-      <blockquote data-ar="«القلم ليس أداة، هو امتداد ليدك. ومن يحترم يده، يستحق قلماً يحترمها.»" data-en="&ldquo;A pen is not a tool — it's an extension of your hand. And those who respect their hand deserve a pen that respects it.&rdquo;">
-        «القلم ليس أداة، هو امتداد ليدك. ومن يحترم يده، يستحق قلماً يحترمها.»
-      </blockquote>
-
-      <h3 data-ar="النمو — ٢٠١٨" data-en="Growth — 2018">النمو — ٢٠١٨</h3>
-      <p data-ar="بعد ست سنوات من التعلّم والتجربة، أطلقنا أول ثلاثية: نجد، الرَّوشن، والسّمراء. كل قلم حمل جزءاً من هويتنا: نجد للصحراء، الرَّوشن للحجاز، والسّمراء للعاصمة الحديثة."
-         data-en="After six years of learning and experimenting, we launched our first trilogy: Najd, Al-Roshen, and Al-Samra. Each pen carried a piece of our identity: Najd for the desert, Al-Roshen for the Hijaz, and Al-Samra for the modern capital.">
-        بعد ست سنوات من التعلّم والتجربة، أطلقنا أول ثلاثية: نجد، الرَّوشن، والسّمراء. كل قلم حمل جزءاً من هويتنا: نجد للصحراء، الرَّوشن للحجاز، والسّمراء للعاصمة الحديثة.
-      </p>
-
-      <h3 data-ar="اليوم" data-en="Today">اليوم</h3>
-      <p data-ar="مشغلنا يفتح أبوابه للزوار كل ثلاثاء. تقدر تشوف القلم وهو يُخرط، والريشة وهي تُصقل. لأن الحرفة لا تُخفى، والقلم الفاخر لا يخاف من الشفافية."
-         data-en="Our workshop opens its doors to visitors every Tuesday. You can see the pen being turned, the nib being polished. Because craft doesn't hide, and a luxury pen isn't afraid of transparency.">
-        مشغلنا يفتح أبوابه للزوار كل ثلاثاء. تقدر تشوف القلم وهو يُخرط، والريشة وهي تُصقل. لأن الحرفة لا تُخفى، والقلم الفاخر لا يخاف من الشفافية.
-      </p>
+      <article class="blog-card" data-nav="post/pen-care">
+        <div class="blog-card-tag" data-ar="عناية" data-en="Care">عناية</div>
+        <h3 data-ar="٧ أخطاء تدمر قلم الحبر السائل" data-en="7 mistakes that ruin a fountain pen">٧ أخطاء تدمر قلم الحبر السائل</h3>
+        <p data-ar="من الأخطاء اليومية اللي تختصر عمر قلمك سنوات، إلى العادات اللي تطيل عمره عقود."
+           data-en="From daily mistakes that cut years off your pen to habits that extend its life decades.">
+          من الأخطاء اليومية اللي تختصر عمر قلمك سنوات، إلى العادات اللي تطيل عمره.
+        </p>
+        <div class="blog-card-meta">
+          <span data-ar="٦ دقائق قراءة" data-en="6 min read">٦ دقائق قراءة</span>
+          <span aria-hidden="true">·</span>
+          <span data-ar="يناير ٢٠٢٦" data-en="January 2026">يناير ٢٠٢٦</span>
+        </div>
+      </article>
     </div>
   </section>
 
-  <!-- ========================== CONTACT PAGE ========================== -->
+  <!-- ========================== BLOG POST (dynamic) ========================== -->
+  <section class="page" id="page-post" aria-labelledby="postTitle">
+    <button class="back-link" data-nav="blog">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      <span data-ar="رجوع للمدونة" data-en="Back to journal">رجوع للمدونة</span>
+    </button>
+    <div class="page-head">
+      <div class="page-kicker" id="postKicker"></div>
+      <h1 class="page-title" id="postTitle"></h1>
+      <div class="post-meta" id="postMeta"></div>
+    </div>
+    <article class="post-body" id="postBody"></article>
+  </section>
+
+  <!-- ========================== CART PAGE ========================== -->
+  <section class="page" id="page-cart" aria-labelledby="cartTitle">
+    <div class="page-head">
+      <div class="page-kicker" data-ar="سلّتي" data-en="My cart">سلّتي</div>
+      <h1 class="page-title" id="cartTitle" data-ar="مراجعة الطلب" data-en="Review your order">مراجعة الطلب</h1>
+      <p class="page-lede" data-ar="راجع أقلامك ثم أكمل الطلب. حاليًا نستقبل الطلبات عبر واتساب مع تأكيد فوري خلال ساعة — الدفع الكامل قريبًا عبر Salla."
+         data-en="Review your pens and complete the order. We currently confirm orders via WhatsApp within one hour — full checkout via Salla is coming soon.">
+        راجع أقلامك ثم أكمل الطلب. حاليًا نستقبل الطلبات عبر واتساب مع تأكيد فوري خلال ساعة — الدفع الكامل قريبًا عبر Salla.
+      </p>
+    </div>
+
+    <div id="cartContent"></div>
+    <div id="cartEmpty" class="cart-empty">
+      <div class="cart-empty-icon">
+        <svg viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M16 10L8 18v38a4 4 0 004 4h40a4 4 0 004-4V18l-8-8zM8 18h48M40 28a8 8 0 01-16 0"/>
+        </svg>
+      </div>
+      <h3 data-ar="سلّتك فارغة" data-en="Your cart is empty">سلّتك فارغة</h3>
+      <p data-ar="اختر قلمك الأول من بين ثلاثة: نجد، الرَّوشن، السّمراء."
+         data-en="Choose your first pen from three: Najd, Al-Roshen, Al-Samra.">
+        اختر قلمك الأول من بين ثلاثة: نجد، الرَّوشن، السّمراء.
+      </p>
+      <button class="btn btn-primary" data-nav="shop">
+        <span data-ar="تصفّح الأقلام" data-en="Explore pens">تصفّح الأقلام</span>
+        <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- ========================== CONTACT (with policies tabs) ========================== -->
   <section class="page" id="page-contact" aria-labelledby="contactTitle">
     <div class="page-head">
       <div class="page-kicker" data-ar="تواصل" data-en="Contact">تواصل</div>
       <h1 class="page-title" id="contactTitle" data-ar="نحن هنا — كيف نبدأ؟" data-en="We're here — how do we begin?">نحن هنا — كيف نبدأ؟</h1>
-      <p class="page-lede" data-ar="نرد على كل رسالة. اختر القناة الأنسب لك، ونحن نلتزم بالرد خلال ٢٤ ساعة في أيام العمل."
-         data-en="We respond to every message. Choose your preferred channel, and we commit to replying within 24 hours on business days.">
-        نرد على كل رسالة. اختر القناة الأنسب لك، ونحن نلتزم بالرد خلال ٢٤ ساعة في أيام العمل.
+      <p class="page-lede" data-ar="نرد على كل رسالة. اختر القناة الأنسب لك، ونلتزم بالرد خلال ٢٤ ساعة في أيام العمل."
+         data-en="We respond to every message. Choose your channel; we commit to 24-hour response on business days.">
+        نرد على كل رسالة. اختر القناة الأنسب لك، ونلتزم بالرد خلال ٢٤ ساعة في أيام العمل.
       </p>
     </div>
 
@@ -2369,7 +2989,7 @@ ul { list-style: none; }
         </div>
         <h3 data-ar="واتساب — الأسرع" data-en="WhatsApp — fastest">واتساب — الأسرع</h3>
         <p data-ar="للاستفسارات السريعة، طلبات النقش، والإهداء المؤسسي."
-           data-en="For quick questions, engraving requests, and corporate gifting.">
+           data-en="For quick questions, engraving, and corporate gifting.">
           للاستفسارات السريعة، طلبات النقش، والإهداء المؤسسي.
         </p>
         <div class="contact-value">+966 58 194 2399</div>
@@ -2392,10 +3012,7 @@ ul { list-style: none; }
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
         </div>
         <h3 data-ar="إنستقرام" data-en="Instagram">إنستقرام</h3>
-        <p data-ar="خلف الكواليس — شاهد الأقلام وهي تُصنع."
-           data-en="Behind the scenes — watch the pens being made.">
-          خلف الكواليس — شاهد الأقلام وهي تُصنع.
-        </p>
+        <p data-ar="خلف الكواليس — الأقلام وهي تُصنع." data-en="Behind the scenes.">خلف الكواليس — الأقلام وهي تُصنع.</p>
         <div class="contact-value">@mehbarapens</div>
       </a>
 
@@ -2404,19 +3021,16 @@ ul { list-style: none; }
           <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M18 3h3l-7.5 8.5L22 21h-6.5l-5-6.5L4.5 21H1.5l8-9L1 3h6.7l4.5 6zm-2.2 16h1.7L8.3 5H6.5z"/></svg>
         </div>
         <h3 data-ar="إكس (تويتر)" data-en="X (Twitter)">إكس (تويتر)</h3>
-        <p data-ar="إعلاناتنا، ورشنا، وأخبارنا."
-           data-en="Our announcements, workshops, and news.">
-          إعلاناتنا، ورشنا، وأخبارنا.
-        </p>
+        <p data-ar="إعلاناتنا، ورشنا، وأخبارنا." data-en="Our announcements and news.">إعلاناتنا، ورشنا، وأخبارنا.</p>
         <div class="contact-value">@mehbarapens</div>
       </a>
     </div>
 
     <div class="newsletter-section">
       <h3 data-ar="النشرة البريدية" data-en="Newsletter">النشرة البريدية</h3>
-      <p data-ar="اشترك لتكون أوّل من يعرف بالإصدارات المحدودة وورش الخط. رسالة شهرية واحدة فقط — لا إزعاج، وإلغاء الاشتراك متاح دائمًا."
-         data-en="Subscribe to be first to know about limited editions and calligraphy workshops. One letter per month — no spam, unsubscribe anytime.">
-        اشترك لتكون أوّل من يعرف بالإصدارات المحدودة وورش الخط. رسالة شهرية واحدة فقط — لا إزعاج، وإلغاء الاشتراك متاح دائمًا.
+      <p data-ar="اشترك لتكون أوّل من يعرف بالإصدارات المحدودة وورش الخط. رسالة شهرية واحدة — لا إزعاج."
+         data-en="Subscribe to be first to know about limited editions and workshops. One letter monthly — no spam.">
+        اشترك لتكون أوّل من يعرف بالإصدارات المحدودة وورش الخط. رسالة شهرية واحدة — لا إزعاج.
       </p>
       <form class="newsletter" id="newsletterForm" novalidate>
         <label for="newsletterEmail" class="sr-only" data-ar="بريدك" data-en="Your email">بريدك</label>
@@ -2427,7 +3041,7 @@ ul { list-style: none; }
         <button type="submit" data-ar="اشترك" data-en="Subscribe">اشترك</button>
       </form>
       <p class="newsletter-note" data-ar="بالاشتراك، أنت توافق على سياسة الخصوصية ومعالجة بياناتك وفق نظام حماية البيانات الشخصية السعودي (PDPL)."
-         data-en="By subscribing, you agree to our privacy policy and data handling under Saudi PDPL.">
+         data-en="By subscribing, you agree to our privacy policy and PDPL-compliant data handling.">
         بالاشتراك، أنت توافق على سياسة الخصوصية ومعالجة بياناتك وفق نظام حماية البيانات الشخصية السعودي (PDPL).
       </p>
       <div class="newsletter-success" id="newsletterSuccess" role="status" aria-live="polite">
@@ -2435,100 +3049,98 @@ ul { list-style: none; }
         <span data-ar="تمّ — وصلتك رسالة ترحيبية." data-en="Done — a welcome letter is on its way.">تمّ — وصلتك رسالة ترحيبية.</span>
       </div>
     </div>
-  </section>
 
-  <!-- ========================== POLICIES PAGE ========================== -->
-  <section class="page" id="page-policies" aria-labelledby="policiesTitle">
-    <div class="page-head">
-      <div class="page-kicker" data-ar="السياسات" data-en="Policies">السياسات</div>
-      <h1 class="page-title" id="policiesTitle" data-ar="الشروط والسياسات" data-en="Terms & Policies">الشروط والسياسات</h1>
-      <p class="page-lede" data-ar="صفحاتنا القانونية كاملة في مكان واحد — الخصوصية، الشحن، الإرجاع، وشروط الاستخدام."
-         data-en="Our legal pages in one place — privacy, shipping, returns, and terms of use.">
-        صفحاتنا القانونية كاملة في مكان واحد — الخصوصية، الشحن، الإرجاع، وشروط الاستخدام.
-      </p>
-    </div>
+    <div class="policies-section">
+      <h2 class="section-title" data-ar="السياسات" data-en="Policies">السياسات</h2>
+      <div class="policy-tabs" role="tablist">
+        <button class="policy-tab" role="tab" aria-selected="true" data-policy="privacy" data-ar="الخصوصية" data-en="Privacy">الخصوصية</button>
+        <button class="policy-tab" role="tab" aria-selected="false" data-policy="shipping" data-ar="الشحن" data-en="Shipping">الشحن</button>
+        <button class="policy-tab" role="tab" aria-selected="false" data-policy="returns" data-ar="إرجاع ٣٠ يوم" data-en="30-day returns">إرجاع ٣٠ يوم</button>
+        <button class="policy-tab" role="tab" aria-selected="false" data-policy="terms" data-ar="شروط الاستخدام" data-en="Terms">شروط الاستخدام</button>
+      </div>
 
-    <div class="policy-tabs" role="tablist">
-      <button class="policy-tab" role="tab" aria-selected="true" data-policy="privacy" data-ar="الخصوصية" data-en="Privacy">الخصوصية</button>
-      <button class="policy-tab" role="tab" aria-selected="false" data-policy="shipping" data-ar="الشحن" data-en="Shipping">الشحن</button>
-      <button class="policy-tab" role="tab" aria-selected="false" data-policy="returns" data-ar="الإرجاع" data-en="Returns">الإرجاع</button>
-      <button class="policy-tab" role="tab" aria-selected="false" data-policy="terms" data-ar="شروط الاستخدام" data-en="Terms">شروط الاستخدام</button>
-    </div>
+      <div class="policy-content is-active" id="policy-privacy">
+        <p data-ar="مِحبرة ملتزمة بحماية خصوصية عملائها وفقاً لنظام حماية البيانات الشخصية السعودي (PDPL) الصادر عن سدايا."
+           data-en="Mehbara is committed to protecting customer privacy under Saudi PDPL.">
+          مِحبرة ملتزمة بحماية خصوصية عملائها وفقاً لنظام حماية البيانات الشخصية السعودي (PDPL) الصادر عن سدايا.
+        </p>
+        <h3 data-ar="البيانات التي نجمعها" data-en="Data we collect">البيانات التي نجمعها</h3>
+        <ul>
+          <li data-ar="الاسم، البريد، ورقم الهاتف عند إتمام الطلب." data-en="Name, email, phone at checkout.">الاسم، البريد، ورقم الهاتف عند إتمام الطلب.</li>
+          <li data-ar="عنوان الشحن لإيصال المنتج." data-en="Shipping address for delivery.">عنوان الشحن لإيصال المنتج.</li>
+          <li data-ar="بيانات التصفح (ملفات تعريف الارتباط) لتحسين تجربتك." data-en="Cookies to improve your experience.">بيانات التصفح (ملفات تعريف الارتباط) لتحسين تجربتك.</li>
+        </ul>
+        <h3 data-ar="حقوقك" data-en="Your rights">حقوقك</h3>
+        <ul>
+          <li data-ar="الوصول لبياناتك وتصحيحها." data-en="Access and correct your data.">الوصول لبياناتك وتصحيحها.</li>
+          <li data-ar="طلب حذف بياناتك من أنظمتنا." data-en="Request deletion.">طلب حذف بياناتك من أنظمتنا.</li>
+          <li data-ar="إلغاء الاشتراك من أي تواصل تسويقي." data-en="Unsubscribe anytime.">إلغاء الاشتراك من أي تواصل تسويقي.</li>
+        </ul>
+      </div>
 
-    <div class="policy-content is-active" id="policy-privacy">
-      <p data-ar="مِحبرة ملتزمة بحماية خصوصية عملائها وفقاً لنظام حماية البيانات الشخصية السعودي (PDPL) الصادر عن الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا)."
-         data-en="Mehbara is committed to protecting customer privacy in accordance with the Saudi Personal Data Protection Law (PDPL).">
-        مِحبرة ملتزمة بحماية خصوصية عملائها وفقاً لنظام حماية البيانات الشخصية السعودي (PDPL) الصادر عن الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا).
-      </p>
-      <h3 data-ar="البيانات التي نجمعها" data-en="Data we collect">البيانات التي نجمعها</h3>
-      <ul>
-        <li data-ar="الاسم، البريد الإلكتروني، ورقم الهاتف عند إتمام الطلب." data-en="Name, email, and phone number at checkout.">الاسم، البريد الإلكتروني، ورقم الهاتف عند إتمام الطلب.</li>
-        <li data-ar="عنوان الشحن لإيصال المنتج إليك." data-en="Shipping address to deliver your product.">عنوان الشحن لإيصال المنتج إليك.</li>
-        <li data-ar="بيانات التصفح (ملفات تعريف الارتباط) لتحسين تجربتك." data-en="Browsing data (cookies) to improve your experience.">بيانات التصفح (ملفات تعريف الارتباط) لتحسين تجربتك.</li>
-      </ul>
-      <h3 data-ar="حقوقك" data-en="Your rights">حقوقك</h3>
-      <ul>
-        <li data-ar="الحق في الوصول إلى بياناتك وتصحيحها." data-en="Right to access and correct your data.">الحق في الوصول إلى بياناتك وتصحيحها.</li>
-        <li data-ar="الحق في طلب حذف بياناتك من أنظمتنا." data-en="Right to request deletion from our systems.">الحق في طلب حذف بياناتك من أنظمتنا.</li>
-        <li data-ar="الحق في إلغاء الاشتراك من أي تواصل تسويقي." data-en="Right to unsubscribe from any marketing communication.">الحق في إلغاء الاشتراك من أي تواصل تسويقي.</li>
-      </ul>
-    </div>
+      <div class="policy-content" id="policy-shipping">
+        <h3 data-ar="الشحن داخل السعودية" data-en="Shipping inside Saudi Arabia">الشحن داخل السعودية</h3>
+        <p data-ar="الشحن مجاني. يصلك الطلب خلال ٣-٥ أيام عمل للمدن الرئيسية، و٥-٧ أيام للمناطق الأخرى."
+           data-en="Free shipping. 3-5 business days for major cities, 5-7 days for other regions.">
+          الشحن مجاني. يصلك الطلب خلال ٣-٥ أيام عمل للمدن الرئيسية، و٥-٧ أيام للمناطق الأخرى.
+        </p>
+        <h3 data-ar="الشحن الخارجي" data-en="International">الشحن الخارجي</h3>
+        <p data-ar="دول الخليج: ٧-١٠ أيام عمل. رسوم شحن ١٥٠ ر.س."
+           data-en="GCC: 7-10 business days. Shipping fee: 150 SAR.">
+          دول الخليج: ٧-١٠ أيام عمل. رسوم شحن ١٥٠ ر.س.
+        </p>
+        <h3 data-ar="شركاؤنا" data-en="Our partners">شركاؤنا</h3>
+        <p data-ar="سمسا · أرامكس · DHL · البريد السعودي" data-en="SMSA · Aramex · DHL · Saudi Post">سمسا · أرامكس · DHL · البريد السعودي</p>
+      </div>
 
-    <div class="policy-content" id="policy-shipping">
-      <h3 data-ar="الشحن داخل السعودية" data-en="Shipping inside Saudi Arabia">الشحن داخل السعودية</h3>
-      <p data-ar="الشحن مجاني لجميع الطلبات داخل المملكة العربية السعودية. يصلك الطلب خلال ٣-٥ أيام عمل للمدن الرئيسية، و٥-٧ أيام للمناطق الأخرى."
-         data-en="Free shipping for all orders inside Saudi Arabia. Delivery in 3-5 business days to major cities, 5-7 days to other regions.">
-        الشحن مجاني لجميع الطلبات داخل المملكة العربية السعودية. يصلك الطلب خلال ٣-٥ أيام عمل للمدن الرئيسية، و٥-٧ أيام للمناطق الأخرى.
-      </p>
-      <h3 data-ar="الشحن الخارجي" data-en="International shipping">الشحن الخارجي</h3>
-      <p data-ar="نشحن لدول الخليج (الإمارات، الكويت، البحرين، قطر، عُمان) خلال ٧-١٠ أيام عمل. رسوم شحن ١٥٠ ر.س."
-         data-en="We ship to GCC countries (UAE, Kuwait, Bahrain, Qatar, Oman) in 7-10 business days. Shipping fee: 150 SAR.">
-        نشحن لدول الخليج (الإمارات، الكويت، البحرين، قطر، عُمان) خلال ٧-١٠ أيام عمل. رسوم شحن ١٥٠ ر.س.
-      </p>
-    </div>
+      <div class="policy-content" id="policy-returns">
+        <h3 data-ar="إرجاع مجاني خلال ٣٠ يوم — حتى لو جربت القلم" data-en="Free 30-day returns — even after trying">إرجاع مجاني خلال ٣٠ يوم — حتى لو جربت القلم</h3>
+        <p data-ar="نحن لا نبيع علبة مغلقة — نبيع تجربة كتابة، ولازم تكون متأكد. لو القلم ما ناسبك لأي سبب، نرجّع المبلغ كاملاً."
+           data-en="We're not selling a sealed box — we're selling a writing experience, and you must be certain. If the pen doesn't suit you for any reason, we refund in full.">
+          نحن لا نبيع علبة مغلقة — نبيع تجربة كتابة، ولازم تكون متأكد. لو القلم ما ناسبك لأي سبب، نرجّع المبلغ كاملاً.
+        </p>
+        <h3 data-ar="كيف يتم الإرجاع؟" data-en="How to return">كيف يتم الإرجاع؟</h3>
+        <ul>
+          <li data-ar="تواصل معنا عبر واتساب خلال ٣٠ يوم." data-en="Contact us via WhatsApp within 30 days.">تواصل معنا عبر واتساب خلال ٣٠ يوم.</li>
+          <li data-ar="نرسل مندوب الشحن لأخذ القلم — دون تكلفة." data-en="We send a courier — no cost to you.">نرسل مندوب الشحن لأخذ القلم — دون تكلفة.</li>
+          <li data-ar="المبلغ يرد خلال ٥-٧ أيام بنفس طريقة الدفع." data-en="Refund in 5-7 days, same payment method.">المبلغ يرد خلال ٥-٧ أيام بنفس طريقة الدفع.</li>
+        </ul>
+        <h3 data-ar="الاستثناءات الوحيدة" data-en="The only exceptions">الاستثناءات الوحيدة</h3>
+        <ul>
+          <li data-ar="الأقلام المنقوشة بالاسم (مصنوعة حسب الطلب)." data-en="Name-engraved pens (made-to-order).">الأقلام المنقوشة بالاسم (مصنوعة حسب الطلب).</li>
+          <li data-ar="الأقلام المصنوعة على المقاس (Bespoke)." data-en="Bespoke pens.">الأقلام المصنوعة على المقاس (Bespoke).</li>
+        </ul>
+        <h3 data-ar="الضمان مدى الحياة" data-en="Lifetime warranty">الضمان مدى الحياة</h3>
+        <p data-ar="كل قلم مضمون مدى الحياة من عيوب الصناعة. الصيانة مجانية في مشغلنا بالرياض."
+           data-en="Every pen is covered for life against manufacturing defects. Free maintenance at our Riyadh workshop.">
+          كل قلم مضمون مدى الحياة من عيوب الصناعة. الصيانة مجانية في مشغلنا بالرياض.
+        </p>
+      </div>
 
-    <div class="policy-content" id="policy-returns">
-      <h3 data-ar="سياسة الإرجاع" data-en="Return policy">سياسة الإرجاع</h3>
-      <p data-ar="نضمن لك حق الإرجاع خلال ٧ أيام من استلام الطلب، بشرط أن يكون القلم بحالته الأصلية داخل علبته، ولم يُستخدم في الكتابة."
-         data-en="We guarantee your right to return within 7 days of receipt, provided the pen is in its original condition, in its box, and has not been used for writing.">
-        نضمن لك حق الإرجاع خلال ٧ أيام من استلام الطلب، بشرط أن يكون القلم بحالته الأصلية داخل علبته، ولم يُستخدم في الكتابة.
-      </p>
-      <h3 data-ar="الاستثناءات" data-en="Exceptions">الاستثناءات</h3>
-      <ul>
-        <li data-ar="الأقلام المنقوشة لا يمكن إرجاعها (مصنوعة حسب الطلب)." data-en="Engraved pens cannot be returned (made-to-order).">الأقلام المنقوشة لا يمكن إرجاعها (مصنوعة حسب الطلب).</li>
-        <li data-ar="الأقلام المصنوعة على مقاس العميل لا يمكن إرجاعها." data-en="Bespoke pens cannot be returned.">الأقلام المصنوعة على مقاس العميل لا يمكن إرجاعها.</li>
-      </ul>
-      <h3 data-ar="الضمان مدى الحياة" data-en="Lifetime warranty">الضمان مدى الحياة</h3>
-      <p data-ar="كل قلم من مِحبرة مضمون مدى الحياة من عيوب الصناعة. الصيانة والإصلاح مجانيان في مشغلنا بالرياض."
-         data-en="Every Mehbara pen is covered against manufacturing defects for life. Maintenance and repair are free at our Riyadh workshop.">
-        كل قلم من مِحبرة مضمون مدى الحياة من عيوب الصناعة. الصيانة والإصلاح مجانيان في مشغلنا بالرياض.
-      </p>
-    </div>
-
-    <div class="policy-content" id="policy-terms">
-      <h3 data-ar="شروط الاستخدام" data-en="Terms of use">شروط الاستخدام</h3>
-      <p data-ar="باستخدامك لموقع مِحبرة، فأنت توافق على الشروط التالية:"
-         data-en="By using the Mehbara website, you agree to the following terms:">
-        باستخدامك لموقع مِحبرة، فأنت توافق على الشروط التالية:
-      </p>
-      <ul>
-        <li data-ar="جميع الأسعار بالريال السعودي وشاملة ضريبة القيمة المضافة (١٥٪)." data-en="All prices in SAR, inclusive of 15% VAT.">جميع الأسعار بالريال السعودي وشاملة ضريبة القيمة المضافة (١٥٪).</li>
-        <li data-ar="الدفع متاح عبر مدى، فيزا، ماستركارد، Apple Pay، STC Pay، وتابي (تقسيط)." data-en="Payment via Mada, Visa, Mastercard, Apple Pay, STC Pay, and Tabby (installments).">الدفع متاح عبر مدى، فيزا، ماستركارد، Apple Pay، STC Pay، وتابي (تقسيط).</li>
-        <li data-ar="حقوق الملكية الفكرية لجميع التصاميم محفوظة لـ مِحبرة." data-en="Intellectual property rights for all designs are reserved to Mehbara.">حقوق الملكية الفكرية لجميع التصاميم محفوظة لـ مِحبرة.</li>
-      </ul>
-      <h3 data-ar="السجل التجاري" data-en="Commercial registration">السجل التجاري</h3>
-      <p data-ar="مِحبرة مسجلة تجارياً في المملكة العربية السعودية · الرياض. (رقم السجل سيُعلن عند الإطلاق الرسمي)."
-         data-en="Mehbara is commercially registered in Saudi Arabia · Riyadh. (Registration number to be announced at official launch).">
-        مِحبرة مسجلة تجارياً في المملكة العربية السعودية · الرياض. (رقم السجل سيُعلن عند الإطلاق الرسمي).
-      </p>
+      <div class="policy-content" id="policy-terms">
+        <h3 data-ar="شروط الاستخدام" data-en="Terms of use">شروط الاستخدام</h3>
+        <ul>
+          <li data-ar="جميع الأسعار بالريال السعودي وشاملة ضريبة القيمة المضافة ١٥٪." data-en="All prices in SAR, inclusive of 15% VAT.">جميع الأسعار بالريال السعودي وشاملة ضريبة القيمة المضافة ١٥٪.</li>
+          <li data-ar="الدفع عبر مدى، Visa، Mastercard، Apple Pay، STC Pay، تابي، وتمارا." data-en="Payment via Mada, Visa, Mastercard, Apple Pay, STC Pay, Tabby, Tamara.">الدفع عبر مدى، Visa، Mastercard، Apple Pay، STC Pay، تابي، وتمارا.</li>
+          <li data-ar="حقوق التصاميم محفوظة لـ مِحبرة." data-en="All design rights reserved to Mehbara.">حقوق التصاميم محفوظة لـ مِحبرة.</li>
+        </ul>
+        <h3 data-ar="السجل التجاري وموثوقية معروف" data-en="Commercial registration & Maroof">السجل التجاري وموثوقية معروف</h3>
+        <p data-ar="مِحبرة مسجلة تجاريًا في المملكة العربية السعودية — الرياض، وموثّقة في خدمة معروف التابعة لوزارة التجارة. رقم السجل والشارة الرسمية سيُنشران عند الإطلاق الكامل."
+           data-en="Mehbara is commercially registered in Saudi Arabia — Riyadh, and verified on Maroof (Ministry of Commerce). Registration number and official badge will be published at full launch.">
+          مِحبرة مسجلة تجاريًا في المملكة العربية السعودية — الرياض، وموثّقة في خدمة معروف التابعة لوزارة التجارة. رقم السجل والشارة الرسمية سيُنشران عند الإطلاق الكامل.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- ========================== FOOTER ========================== -->
   <footer class="footer" role="contentinfo">
     <div class="footer-inner">
-      <span data-ar="© مِحبرة ٢٠٢٦ · صُنع في الرياض" data-en="© Mehbara 2026 · Made in Riyadh">© مِحبرة ٢٠٢٦ · صُنع في الرياض</span>
-      <span class="footer-slogan" data-ar="حين يصبح للقلم هوية" data-en="When a pen earns its identity">حين يصبح للقلم هوية</span>
+      <div class="footer-main">
+        <span data-ar="© مِحبرة ٢٠٢٦ · صُنع في الرياض" data-en="© Mehbara 2026 · Made in Riyadh">© مِحبرة ٢٠٢٦ · صُنع في الرياض</span>
+        <span class="footer-slogan" data-ar="حين يصبح للقلم هوية" data-en="When a pen earns its identity">حين يصبح للقلم هوية</span>
+      </div>
+      <div class="footer-meta" data-ar="سجل تجاري سعودي · موثّق في معروف · شحن من الرياض" data-en="Saudi commercial registry · Maroof verified · Ships from Riyadh">سجل تجاري سعودي · موثّق في معروف · شحن من الرياض</div>
     </div>
   </footer>
 
@@ -2536,6 +3148,7 @@ ul { list-style: none; }
 </div>
 
 <div id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
 <script>
 (function() {
   'use strict';
@@ -2598,6 +3211,13 @@ ul { list-style: none; }
   }
   langBtn.addEventListener('click', () => {
     applyLang(root.getAttribute('data-lang') === 'ar' ? 'en' : 'ar');
+    // Re-render dynamic pages if currently visible
+    const current = parseHash();
+    const [mainRoute, subRoute] = current.split('/');
+    if (mainRoute === 'product' && subRoute) renderProduct(subRoute);
+    else if (mainRoute === 'service' && subRoute) renderService(subRoute);
+    else if (mainRoute === 'post' && subRoute) renderPost(subRoute);
+    else if (mainRoute === 'cart') renderCart();
   });
   const savedLang = storage.get('mehbara-lang');
   if (savedLang) applyLang(savedLang);
@@ -2643,10 +3263,11 @@ ul { list-style: none; }
     // Remove all active states
     document.querySelectorAll('.nav-link.is-active, .nav-sublink.is-active').forEach(el => el.classList.remove('is-active'));
 
-    // Determine parent route (e.g. "product/najd" → "shop" parent)
+    // Determine parent route (e.g. "product/najd" → "shop" parent, "post/xxx" → "blog" parent)
     let parentRoute = route.split('/')[0];
     if (parentRoute === 'product') parentRoute = 'shop';
     if (parentRoute === 'service') parentRoute = 'services';
+    if (parentRoute === 'post') parentRoute = 'blog';
 
     // Activate main nav parent
     const mainLink = document.querySelector(`.nav-link[data-nav="${parentRoute}"]`);
@@ -2676,6 +3297,18 @@ ul { list-style: none; }
       const page = document.getElementById('page-service');
       if (page) {
         renderService(subRoute);
+        page.classList.add('is-active');
+      }
+    } else if (mainRoute === 'post' && subRoute) {
+      const page = document.getElementById('page-post');
+      if (page) {
+        renderPost(subRoute);
+        page.classList.add('is-active');
+      }
+    } else if (mainRoute === 'cart') {
+      const page = document.getElementById('page-cart');
+      if (page) {
+        renderCart();
         page.classList.add('is-active');
       }
     } else {
@@ -2801,13 +3434,6 @@ ul { list-style: none; }
 
   /* ============== SERVICES DATA ============== */
   const SERVICES = {
-    ready: {
-      kicker_ar: 'أقلام جاهزة', kicker_en: 'Ready pens',
-      title_ar: 'مجموعتنا الجاهزة للشحن',
-      title_en: 'Our ready-to-ship collection',
-      body_ar: `<p>ثلاثة أقلام تمثّل هوية مِحبرة: نجد الكلاسيكي بريشته الذهبية، الرَّوشن الخشبي المستوحى من عمارة الحجاز، والسّمراء المعاصر بجسمه الألمنيومي.</p><p>كل قلم جاهز للشحن خلال ٢-٣ أيام عمل، ويأتي في علبة خشب زيتون مختومة بشمع أحمر يحمل توقيع مِحبرة.</p><h3>ما الذي يأتي مع كل قلم؟</h3><ul><li>القلم نفسه بتغليفه الأصلي</li><li>قارورة حبر سعودية الصنع (١٥ ملم)</li><li>بطاقة ضمان مدى الحياة</li><li>كتيّب صيانة بالعربية والإنجليزية</li><li>بطاقة شكر بخطّ اليد</li></ul>`,
-      body_en: `<p>Three pens representing Mehbara's identity: Najd the classic with golden nib, Al-Roshen the wooden Hijazi-inspired piece, and Al-Samra the contemporary aluminium rollerball.</p><p>Each pen ships within 2-3 business days in an olive-wood box sealed with red wax bearing the Mehbara signature.</p><h3>What comes with every pen?</h3><ul><li>The pen itself in its original packaging</li><li>A Saudi-made ink bottle (15ml)</li><li>Lifetime warranty card</li><li>Care booklet in Arabic and English</li><li>A handwritten thank-you card</li></ul>`
-    },
     bespoke: {
       kicker_ar: 'قلم على مقاسك', kicker_en: 'Bespoke pen',
       title_ar: 'قلم واحد، لك وحدك',
@@ -2847,9 +3473,163 @@ ul { list-style: none; }
     document.getElementById('serviceDetail').innerHTML = s['body_' + lang];
   }
 
+  /* ============== BLOG DATA ============== */
+  const BLOG_POSTS = {
+    'choose-nib': {
+      kicker_ar: 'دليل · مارس ٢٠٢٦', kicker_en: 'Guide · March 2026',
+      title_ar: 'كيف تختار ريشتك الأولى؟',
+      title_en: 'How to choose your first nib',
+      meta_ar: '٨ دقائق قراءة · بقلم فريق مِحبرة',
+      meta_en: '8 min read · By the Mehbara team',
+      body_ar: `<p>اختيار الريشة هو القرار الأهم في شراء قلم حبر سائل. الريشة الغلط تخلي حتى أفخم قلم عديم الفائدة، والريشة الصح تخلي أبسط قلم يبدع على الورق. هذا الدليل يمشيك خطوة بخطوة.</p>
+        <h3>١. كيف تمسك القلم؟</h3>
+        <p>قبل ما تختار الريشة، لاحظ كيف تمسك القلم. هل تمسكه بضغط قوي أو خفيف؟ هل زاوية القلم حادة أو منبطحة؟ هذي الإجابة تحدد أول شرط في الريشة.</p>
+        <ul>
+          <li><strong>ضغط خفيف + زاوية حادة:</strong> ريشة F (Fine) أو EF (Extra Fine).</li>
+          <li><strong>ضغط متوسط + زاوية طبيعية:</strong> ريشة M (Medium) — الأكثر استعمالاً عالمياً.</li>
+          <li><strong>ضغط قوي أو يد واسعة:</strong> ريشة B (Broad) أو BB.</li>
+        </ul>
+        <h3>٢. ما الذي تكتبه أكثر؟</h3>
+        <p>نوع الكتابة يحدد الريشة بقدر ما يحدد الضغط:</p>
+        <ul>
+          <li><strong>ملاحظات يومية وأجندة:</strong> F أو M — الخط دقيق ويناسب الدفاتر الصغيرة.</li>
+          <li><strong>رسائل رسمية وتوقيعات:</strong> M أو B — تعطي حضور وثقل.</li>
+          <li><strong>خط عربي أو كاليقرافي:</strong> Stub أو Italic — ريشة مقطوعة تعطي اختلاف في سماكة الخط مع تغيّر الاتجاه.</li>
+        </ul>
+        <blockquote>«أنصح المبتدئين دائماً بريشة M. هي الوسط الذهبي: ما هي رفيعة لدرجة تخرمش الورق، وما هي عريضة لدرجة تستهلك الحبر.»</blockquote>
+        <h3>٣. اختبار بسيط قبل الشراء</h3>
+        <p>لو عندك فرصة تجرب، اكتب جملتين بكل ريشة:</p>
+        <ul>
+          <li>"بسم الله الرحمن الرحيم" بخط طبيعي.</li>
+          <li>اسمك كامل ثلاث مرات.</li>
+        </ul>
+        <p>الريشة الصحيحة تحس فيها "تمشي" على الورق بدون ما تضغط. لو حسيت أنك تدفع القلم دفع، هي مو الريشة الصحيحة لك.</p>
+        <h3>٤. توصيتنا لأقلام مِحبرة</h3>
+        <p>أقلامنا تجي بريشة M افتراضياً، لأنها تناسب ٨٠٪ من العملاء. لكن نقدر نغيّرها لأي درجة مجاناً خلال ٣٠ يوم من الشراء — لأن الريشة، مثل الحذاء، لازم تناسب صاحبها.</p>`,
+      body_en: `<p>Choosing the nib is the most important decision in buying a fountain pen. The wrong nib makes even the most luxurious pen useless, and the right one makes a simple pen sing on paper. This guide walks you through it step by step.</p>
+        <h3>1. How do you hold the pen?</h3>
+        <p>Before choosing a nib, notice how you grip the pen. Heavy or light pressure? Sharp or flat angle? That answer sets the first requirement.</p>
+        <ul>
+          <li><strong>Light pressure + sharp angle:</strong> F (Fine) or EF (Extra Fine).</li>
+          <li><strong>Medium pressure + natural angle:</strong> M (Medium) — the most used nib worldwide.</li>
+          <li><strong>Heavy pressure or large hand:</strong> B (Broad) or BB.</li>
+        </ul>
+        <h3>2. What do you write most?</h3>
+        <ul>
+          <li><strong>Daily notes and planners:</strong> F or M — fine line, fits small notebooks.</li>
+          <li><strong>Formal letters and signatures:</strong> M or B — presence and weight.</li>
+          <li><strong>Arabic calligraphy:</strong> Stub or Italic — cut nibs give thick-thin contrast with direction.</li>
+        </ul>
+        <blockquote>&ldquo;I always advise beginners to start with M. It's the golden middle: not so thin it scratches, not so broad it drinks ink.&rdquo;</blockquote>
+        <h3>3. A simple pre-purchase test</h3>
+        <p>If you can try before buying, write two things with each nib:</p>
+        <ul>
+          <li>A short verse in your natural handwriting.</li>
+          <li>Your full name three times.</li>
+        </ul>
+        <p>The right nib should "glide" without pressure. If you feel you're pushing, it's not your nib.</p>
+        <h3>4. Our recommendation for Mehbara pens</h3>
+        <p>Our pens ship with an M nib by default — it suits about 80% of customers. But we'll swap it for any grade free of charge within 30 days of purchase. A nib, like a shoe, must fit its owner.</p>`
+    },
+    'saudi-calligraphy': {
+      kicker_ar: 'تاريخ · فبراير ٢٠٢٦', kicker_en: 'History · February 2026',
+      title_ar: 'تاريخ الخط السعودي — من الديراية إلى الآن',
+      title_en: 'History of Saudi calligraphy',
+      meta_ar: '١٢ دقيقة قراءة · بقلم فريق مِحبرة',
+      meta_en: '12 min read · By the Mehbara team',
+      body_ar: `<p>الخط العربي في الجزيرة العربية ما بدأ من الصفر — بدأ من سطر أول، كتبه تاجر في سوق الديراية قبل ثلاثمئة سنة. هذي قصة كيف تطوّر الخط في المملكة، ومين الخطّاطون اللي صنعوا هويتنا البصرية.</p>
+        <h3>الجذور — قبل الدولة السعودية الأولى</h3>
+        <p>الخط العربي وصل الجزيرة مع التجار القادمين من العراق والشام. في مكة والمدينة، كان الخط مقتصراً على نسخ المصاحف والوثائق الدينية. في نجد، كان الخط أداة تجارية قبل أي شيء — دفاتر التجار، عقود البيع، رسائل البادية.</p>
+        <h3>الحركة الأولى — عهد الإمام تركي بن عبدالله (١٨٢٤)</h3>
+        <p>مع تأسيس الدولة السعودية الثانية، ظهرت الحاجة لخطّاطين رسميين للمكاتبات. الإمام تركي استقدم خطّاطين من الأحساء وبغداد، وأسّس أول مدرسة خط شبه رسمية في الرياض القديمة.</p>
+        <blockquote>«الخط في نجد لم يكن ترفاً — كان ضرورة. التاجر الذي لا يكتب جيداً كان يخسر صفقات.»</blockquote>
+        <h3>الخطّاطون الرواد في القرن العشرين</h3>
+        <p>ثلاثة أسماء غيّرت مسار الخط السعودي في القرن الماضي:</p>
+        <ul>
+          <li><strong>عبدالرحمن العامر (١٩١٥-١٩٩٢):</strong> خطّاط الملك عبدالعزيز. يُنسب إليه تطوير خط "نجد الحديث" — خط ثلث معدّل لأسلوب الخليج.</li>
+          <li><strong>خضير البورسعيدي (١٩٢٠-٢٠٠٥):</strong> أشهر من كتب على عملات المملكة في الخمسينيات.</li>
+          <li><strong>ناصر الميمون (١٩٣٥-٢٠١٨):</strong> أسّس أول قسم خط في جامعة الإمام. درّس جيلاً كاملاً.</li>
+        </ul>
+        <h3>الحركة المعاصرة — ما بعد ٢٠١٠</h3>
+        <p>مع رؤية ٢٠٣٠ والاهتمام المتجدد بالموروث، شهد الخط السعودي نهضة حقيقية. ظهر جيل جديد من الخطّاطين الشباب الذين يمزجون الكلاسيك بالتصميم الحديث، وفتحت هيئة التراث السعودية برنامج "الخط السعودي" لتوثيق هذا الفن.</p>
+        <h3>الخط والقلم — علاقة لا تنفصل</h3>
+        <p>كل خطّاط له قلم يحبّه. بعضهم يفضّل القلم البري التقليدي، بعضهم ينتقل للقلم الحبر السائل الحديث. في مِحبرة، نؤمن أن القلم الجيد يكرّم الخط، وأن الخط يكرّم القلم — علاقة متبادلة بنيناها على إرث ثلاثة قرون.</p>`,
+      body_en: `<p>Arabic calligraphy in the Peninsula didn't start from nothing — it began with a first line, written by a merchant in the Al-Dairaya market three hundred years ago. This is the story of how calligraphy evolved in the Kingdom, and who shaped our visual identity.</p>
+        <h3>The roots — before the First Saudi State</h3>
+        <p>Arabic calligraphy reached the Peninsula with traders from Iraq and the Levant. In Makkah and Madinah, calligraphy was mainly limited to copying Qur'ans and religious documents. In Najd, it was above all a commercial tool — merchant ledgers, sale contracts, Bedouin letters.</p>
+        <h3>The first movement — Imam Turki bin Abdullah era (1824)</h3>
+        <p>With the founding of the Second Saudi State, official calligraphers were needed for correspondence. Imam Turki brought calligraphers from Al-Ahsa and Baghdad, founding the first semi-official calligraphy school in old Riyadh.</p>
+        <blockquote>&ldquo;Calligraphy in Najd was not a luxury — it was a necessity. A merchant who couldn't write well lost deals.&rdquo;</blockquote>
+        <h3>20th-century pioneers</h3>
+        <ul>
+          <li><strong>Abdulrahman Al-Amer (1915-1992):</strong> King Abdulaziz's calligrapher. Credited with "Modern Najd" — a Thuluth variant tuned to Gulf style.</li>
+          <li><strong>Khudair Al-Bursaidi (1920-2005):</strong> Best known for lettering on 1950s Saudi currency.</li>
+          <li><strong>Nasser Al-Maimoun (1935-2018):</strong> Founded the first calligraphy department at Imam University.</li>
+        </ul>
+        <h3>The contemporary movement — post-2010</h3>
+        <p>With Vision 2030 and renewed interest in heritage, Saudi calligraphy has seen a real revival. A new generation blends classical with modern design, and the Heritage Commission has launched a "Saudi Calligraphy" documentation program.</p>
+        <h3>Calligraphy and the pen — an inseparable bond</h3>
+        <p>Every calligrapher has a beloved pen. At Mehbara, we believe a good pen honors the script, and the script honors the pen — a relationship we've built on three centuries of inheritance.</p>`
+    },
+    'pen-care': {
+      kicker_ar: 'عناية · يناير ٢٠٢٦', kicker_en: 'Care · January 2026',
+      title_ar: '٧ أخطاء تدمر قلم الحبر السائل',
+      title_en: '7 mistakes that ruin a fountain pen',
+      meta_ar: '٦ دقائق قراءة · بقلم فريق مِحبرة',
+      meta_en: '6 min read · By the Mehbara team',
+      body_ar: `<p>قلم الحبر السائل يعيش عقوداً لو عاملته صح، أو يموت في سنتين لو عاملته غلط. هذي سبعة أخطاء شائعة نشوفها كل يوم في ورشتنا، وكيف تتجنبها.</p>
+        <h3>١. تركه فاضي بدون حبر لأسابيع</h3>
+        <p>القلم الفاضي الريشة تجف، والحبر الباقي في الخرطوشة يتصمّغ. النتيجة: ريشة لا تكتب، وخرطوشة مسدودة. <strong>الحل:</strong> لو ما راح تستعمله أسبوع، نظّفه كلياً وحطه جاف. لو أسبوع واحد أو أقل، خلّه فيه حبر.</p>
+        <h3>٢. استخدام حبر غير مناسب</h3>
+        <p>كل حبر ما يصلح لكل قلم. الأحبار الصينية الرخيصة فيها شوائب، والأحبار المضيئة فيها جزيئات تسدّ المجاري الدقيقة. <strong>الحل:</strong> استخدم أحباراً موصى بها من الصانع (نحن نقترح Pelikan 4001 أو Pilot Iroshizuku للاستعمال اليومي).</p>
+        <h3>٣. الكتابة بضغط قوي</h3>
+        <p>قلم الحبر السائل ما يحتاج ضغط — الحبر ينزل بالجاذبية. الضغط القوي يشوه الريشة ويسبب تباعد شقّيها. لو صار هذا، الريشة ما ترجع مثل الأول.</p>
+        <blockquote>«امسك القلم كأنك تمسك طائر صغير: كفاية قوة ما يطير، وخفيف لدرجة ما تؤذيه.»</blockquote>
+        <h3>٤. حمله مقلوباً في الجيب</h3>
+        <p>لما تحمل القلم والريشة للأسفل، الحبر يرجع للخلف ويدخل هواء في الخرطوشة. أول كتابة تكون مبقعة. <strong>الحل:</strong> احمل القلم والريشة للأعلى دائماً (الغطاء للأسفل في الجيب).</p>
+        <h3>٥. تنظيفه بالماء الساخن</h3>
+        <p>الماء الساخن يوسّع المعدن ويفكك الأغراء. بعد عدة مرات، الريشة تتزعزع. <strong>الحل:</strong> استخدم ماء بارد أو فاتر فقط للتنظيف.</p>
+        <h3>٦. تركه في السيارة تحت الشمس</h3>
+        <p>حرارة السعودية صيفاً تصل ٧٠° داخل السيارة المقفلة. الحبر يتبخر، الراتنج يلين، والخاتم المعدني يتمدد. النتيجة: قلم تالف خلال شهر. <strong>الحل:</strong> لا تترك قلمك في السيارة أبداً.</p>
+        <h3>٧. محاولة إصلاحه بنفسك</h3>
+        <p>لو القلم ما يكتب، أول رد فعل هو فكّ الريشة وتنظيفها. ٩٠٪ من الأقلام اللي تجي ورشتنا مكسورة بهذا السبب. <strong>الحل:</strong> لو في مشكلة، تواصل معنا. الصيانة عندنا مجانية مدى الحياة.</p>
+        <h3>القاعدة الذهبية</h3>
+        <p>قلم الحبر السائل مثل الساعة الميكانيكية — يحب الاستعمال المنتظم، يكره الإهمال، ويعيش طويلاً لو احترمته. قلمك عمره ٣٠ سنة إن شاء الله، لو فقط اتبعت الأساسيات.</p>`,
+      body_en: `<p>A fountain pen can live for decades if you treat it right, or die in two years if you don't. Here are seven common mistakes we see daily in our workshop, and how to avoid them.</p>
+        <h3>1. Leaving it empty for weeks</h3>
+        <p>An empty pen's nib dries out, and residual ink in the cartridge gums up. Result: a nib that won't write and a clogged cartridge. <strong>Fix:</strong> if you won't use it for a week, clean it fully and store dry. Less than a week, keep ink in.</p>
+        <h3>2. Using the wrong ink</h3>
+        <p>Not every ink suits every pen. Cheap inks contain impurities; shimmer inks have particles that clog fine channels. <strong>Fix:</strong> use manufacturer-recommended inks (we suggest Pelikan 4001 or Pilot Iroshizuku for daily use).</p>
+        <h3>3. Pressing hard</h3>
+        <p>A fountain pen needs no pressure — ink flows by gravity. Heavy pressure deforms the nib and spreads its tines. Once spread, it won't return to original.</p>
+        <blockquote>&ldquo;Hold the pen like you'd hold a small bird: firm enough it can't fly, light enough you don't hurt it.&rdquo;</blockquote>
+        <h3>4. Carrying it nib-down in your pocket</h3>
+        <p>Carrying nib-down lets ink recede, pulling air into the cartridge. Your first write is blotchy. <strong>Fix:</strong> always carry nib-up (cap-down in pocket).</p>
+        <h3>5. Cleaning with hot water</h3>
+        <p>Hot water expands metal and loosens adhesives. After many washes, the nib wiggles. <strong>Fix:</strong> only use cold or lukewarm water to clean.</p>
+        <h3>6. Leaving it in a car under the sun</h3>
+        <p>Saudi summer heat hits 70°C inside a closed car. Ink evaporates, resin softens, metal rings expand. A ruined pen in a month. <strong>Fix:</strong> never leave your pen in the car.</p>
+        <h3>7. Trying to fix it yourself</h3>
+        <p>When a pen won't write, the first instinct is to unscrew the nib and clean it. 90% of damaged pens that arrive at our workshop were broken this way. <strong>Fix:</strong> contact us — maintenance is free for life.</p>
+        <h3>The golden rule</h3>
+        <p>A fountain pen is like a mechanical watch: it loves regular use, hates neglect, and lives long when respected. Your pen should live 30 years — if you follow the basics.</p>`
+    }
+  };
+
+  function renderPost(id) {
+    const p = BLOG_POSTS[id];
+    if (!p) return;
+    const lang = root.getAttribute('data-lang');
+    document.getElementById('postKicker').textContent = p['kicker_' + lang];
+    document.getElementById('postTitle').textContent = p['title_' + lang];
+    document.getElementById('postMeta').textContent = p['meta_' + lang];
+    document.getElementById('postBody').innerHTML = p['body_' + lang];
+  }
+
   /* ============== CART ============== */
   const cartBadge = document.getElementById('cartCount');
   const cartBadgeMobile = document.getElementById('cartCountMobile');
+  const navCartBadge = document.getElementById('navCartBadge');
   const cartBtn = document.getElementById('cartBtn');
   const cartBtnMobile = document.getElementById('cartBtnMobile');
 
@@ -2863,8 +3643,8 @@ ul { list-style: none; }
   }
   function updateCartBadge() {
     const c = cartCount();
-    const text = c > 99 ? '99+' : c;
-    [cartBadge, cartBadgeMobile].forEach(b => {
+    const text = c > 99 ? '99+' : String(c);
+    [cartBadge, cartBadgeMobile, navCartBadge].forEach(b => {
       if (b) {
         b.textContent = text;
         b.classList.toggle('is-visible', c > 0);
@@ -2876,8 +3656,198 @@ ul { list-style: none; }
     cart[id] = (cart[id] || 0) + 1;
     saveCart(cart);
     updateCartBadge();
+    // If cart page is currently visible, re-render it live
+    if (document.getElementById('page-cart').classList.contains('is-active')) {
+      renderCart();
+    }
   }
   updateCartBadge();
+
+  /* ============== CART PAGE RENDER ============== */
+  function renderCart() {
+    const cart = getCart();
+    const lang = root.getAttribute('data-lang');
+    const cartContent = document.getElementById('cartContent');
+    const cartEmpty = document.getElementById('cartEmpty');
+    const entries = Object.entries(cart).filter(([id, qty]) => PRODUCTS[id] && qty > 0);
+
+    if (entries.length === 0) {
+      cartContent.innerHTML = '';
+      cartEmpty.classList.add('is-visible');
+      return;
+    }
+    cartEmpty.classList.remove('is-visible');
+
+    // Build list
+    let subtotal = 0;
+    const rows = entries.map(([id, qty]) => {
+      const p = PRODUCTS[id];
+      const lineTotal = p.price * qty;
+      subtotal += lineTotal;
+      const name = lang === 'ar' ? p.name_ar : p.name_en;
+      const engName = lang === 'ar' ? p.name_en : p.name_ar;
+      const sar = lang === 'ar' ? 'ر.س' : 'SAR';
+      return `
+        <div class="cart-row" data-cart-id="${id}">
+          <div class="cart-row-visual">${p.svg}</div>
+          <div class="cart-row-info">
+            <h3>${name}<small>${engName}</small></h3>
+            <div class="cart-unit-price">${p.price.toLocaleString()} ${sar}</div>
+            <div class="cart-qty" role="group" aria-label="${lang === 'ar' ? 'الكمية' : 'Quantity'}">
+              <button class="qty-btn" data-qty-action="dec" data-id="${id}" aria-label="${lang === 'ar' ? 'نقص' : 'Decrease'}">−</button>
+              <span class="cart-qty-value">${qty}</span>
+              <button class="qty-btn" data-qty-action="inc" data-id="${id}" aria-label="${lang === 'ar' ? 'زيادة' : 'Increase'}">+</button>
+            </div>
+          </div>
+          <div class="cart-row-total">
+            <div class="cart-row-price">${lineTotal.toLocaleString()} <small>${sar}</small></div>
+            <button class="cart-remove" data-remove-id="${id}">${lang === 'ar' ? 'إزالة' : 'Remove'}</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    const vat = Math.round(subtotal * 15 / 115);
+    const sarLabel = lang === 'ar' ? 'ر.س' : 'SAR';
+
+    const summaryHtml = `
+      <div class="cart-summary">
+        <div class="cart-sum-row">
+          <span>${lang === 'ar' ? 'المجموع قبل الضريبة' : 'Subtotal (ex-VAT)'}</span>
+          <span>${(subtotal - vat).toLocaleString()} ${sarLabel}</span>
+        </div>
+        <div class="cart-sum-row">
+          <span>${lang === 'ar' ? 'ضريبة القيمة المضافة ١٥٪' : 'VAT 15%'}</span>
+          <span>${vat.toLocaleString()} ${sarLabel}</span>
+        </div>
+        <div class="cart-sum-row">
+          <span>${lang === 'ar' ? 'الشحن داخل السعودية' : 'Shipping inside Saudi'}</span>
+          <span>${lang === 'ar' ? 'مجاني' : 'Free'}</span>
+        </div>
+        <div class="cart-sum-row total">
+          <span>${lang === 'ar' ? 'الإجمالي' : 'Total'}</span>
+          <span>${subtotal.toLocaleString()} ${sarLabel}</span>
+        </div>
+        <div class="cart-sum-note">
+          ${lang === 'ar'
+            ? 'الأسعار شاملة ضريبة القيمة المضافة. الشحن مجاني داخل المملكة خلال ٣-٥ أيام عمل.'
+            : 'Prices include VAT. Free shipping inside Saudi Arabia in 3-5 business days.'}
+        </div>
+      </div>
+    `;
+
+    const formHtml = `
+      <form class="cart-form" id="cartOrderForm" novalidate>
+        <h3>${lang === 'ar' ? 'بيانات الطلب' : 'Order details'}</h3>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cfName">${lang === 'ar' ? 'الاسم الكامل' : 'Full name'}</label>
+            <input type="text" id="cfName" required autocomplete="name" placeholder="${lang === 'ar' ? 'اسمك' : 'Your name'}">
+          </div>
+          <div class="form-field">
+            <label for="cfPhone">${lang === 'ar' ? 'رقم الجوال' : 'Mobile number'}</label>
+            <input type="tel" id="cfPhone" required autocomplete="tel" placeholder="+9665XXXXXXXX">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cfEmail">${lang === 'ar' ? 'البريد الإلكتروني' : 'Email'}</label>
+            <input type="email" id="cfEmail" required autocomplete="email" placeholder="name@example.com">
+          </div>
+          <div class="form-field">
+            <label for="cfCity">${lang === 'ar' ? 'المدينة' : 'City'}</label>
+            <select id="cfCity" required>
+              <option value="">${lang === 'ar' ? '— اختر —' : '— select —'}</option>
+              <option>${lang === 'ar' ? 'الرياض' : 'Riyadh'}</option>
+              <option>${lang === 'ar' ? 'جدة' : 'Jeddah'}</option>
+              <option>${lang === 'ar' ? 'الدمام / الخبر' : 'Dammam / Khobar'}</option>
+              <option>${lang === 'ar' ? 'مكة المكرمة' : 'Makkah'}</option>
+              <option>${lang === 'ar' ? 'المدينة المنورة' : 'Madinah'}</option>
+              <option>${lang === 'ar' ? 'مدينة أخرى' : 'Other city'}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="cfAddress">${lang === 'ar' ? 'العنوان التفصيلي' : 'Detailed address'}</label>
+          <textarea id="cfAddress" required placeholder="${lang === 'ar' ? 'الحي، الشارع، رقم المنزل، الرمز البريدي' : 'District, street, building, postal code'}"></textarea>
+        </div>
+        <div class="form-field">
+          <label for="cfNotes">${lang === 'ar' ? 'ملاحظات (اختياري) — مثل النقش المطلوب' : 'Notes (optional) — e.g. engraving request'}</label>
+          <textarea id="cfNotes" placeholder="${lang === 'ar' ? 'مثال: أريد نقش اسم «خالد» بخط الديواني' : 'e.g. Engrave name \"Khalid\" in Diwani script'}"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" stroke="none" aria-hidden="true"><path d="M12 2a10 10 0 00-8.5 15.2L2 22l4.9-1.4A10 10 0 1012 2zm5.5 12c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6 0-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.6-1.6-1.9-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.2.3-.4.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4 0 1.4 1 2.8 1.2 3 .2.2 2.1 3.1 5 4.4 2.9 1.2 2.9.8 3.4.8.5-.1 1.6-.6 1.8-1.3.2-.7.2-1.2.1-1.3 0-.1-.2-.2-.5-.4z"/></svg>
+          <span>${lang === 'ar' ? 'أكمل الطلب عبر واتساب' : 'Complete order via WhatsApp'}</span>
+        </button>
+        <p class="form-hint">
+          ${lang === 'ar'
+            ? 'لضمان تجربة دفع آمنة، نستقبل الطلبات حاليًا عبر واتساب — نرسل لك فاتورة دفع إلكترونية (مدى، Apple Pay، تابي، تمارا) بعد تأكيد الطلب. تكامل Salla الكامل قريبًا.'
+            : 'For a secure checkout, we currently receive orders via WhatsApp — we will send an electronic invoice (Mada, Apple Pay, Tabby, Tamara) once confirmed. Full Salla integration coming soon.'}
+        </p>
+      </form>
+    `;
+
+    cartContent.innerHTML = `<div class="cart-list">${rows}</div>${summaryHtml}${formHtml}`;
+
+    // Attach qty/remove handlers
+    cartContent.querySelectorAll('[data-qty-action]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        const action = btn.dataset.qtyAction;
+        const c = getCart();
+        if (action === 'inc') c[id] = (c[id] || 0) + 1;
+        else if (action === 'dec') {
+          c[id] = (c[id] || 0) - 1;
+          if (c[id] <= 0) delete c[id];
+        }
+        saveCart(c);
+        updateCartBadge();
+        renderCart();
+      });
+    });
+    cartContent.querySelectorAll('[data-remove-id]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.removeId;
+        const c = getCart();
+        delete c[id];
+        saveCart(c);
+        updateCartBadge();
+        renderCart();
+      });
+    });
+
+    // Form submit → build WhatsApp URL
+    const form = document.getElementById('cartOrderForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('cfName').value.trim();
+      const phone = document.getElementById('cfPhone').value.trim();
+      const email = document.getElementById('cfEmail').value.trim();
+      const city = document.getElementById('cfCity').value;
+      const address = document.getElementById('cfAddress').value.trim();
+      const notes = document.getElementById('cfNotes').value.trim();
+
+      if (!name || !phone || !email || !city || !address) {
+        showToast(lang === 'ar' ? 'أكمل جميع الحقول المطلوبة' : 'Please complete all required fields');
+        return;
+      }
+
+      // Build order summary text
+      let orderLines = entries.map(([id, qty]) => {
+        const p = PRODUCTS[id];
+        const n = lang === 'ar' ? p.name_ar : p.name_en;
+        return `• ${n} × ${qty} = ${(p.price * qty).toLocaleString()} ${sarLabel}`;
+      }).join('\n');
+
+      const msg = lang === 'ar'
+        ? `السلام عليكم، أرغب بإتمام طلب من متجر مِحبرة:\n\n*الطلب:*\n${orderLines}\n\n*الإجمالي:* ${subtotal.toLocaleString()} ر.س (شامل الضريبة)\n\n*بيانات العميل:*\nالاسم: ${name}\nالجوال: ${phone}\nالبريد: ${email}\nالمدينة: ${city}\nالعنوان: ${address}${notes ? '\n\nملاحظات: ' + notes : ''}\n\nشاكر لكم.`
+        : `Hello, I'd like to complete an order from Mehbara:\n\n*Order:*\n${orderLines}\n\n*Total:* ${subtotal.toLocaleString()} SAR (VAT incl.)\n\n*Customer details:*\nName: ${name}\nMobile: ${phone}\nEmail: ${email}\nCity: ${city}\nAddress: ${address}${notes ? '\n\nNotes: ' + notes : ''}\n\nThank you.`;
+
+      const url = 'https://wa.me/966581942399?text=' + encodeURIComponent(msg);
+      window.open(url, '_blank', 'noopener');
+      showToast(lang === 'ar' ? 'جاري فتح واتساب — أكمل إرسال الرسالة' : 'Opening WhatsApp — complete the message');
+    });
+  }
 
   /* ============== TOAST ============== */
   const toast = document.getElementById('toast');
@@ -2903,24 +3873,9 @@ ul { list-style: none; }
     });
   });
 
-  /* ============== CART BUTTONS — show summary ============== */
-  function cartSummary() {
-    const cart = getCart();
-    const lang = root.getAttribute('data-lang');
-    const count = cartCount();
-    if (count === 0) {
-      return lang === 'ar' ? 'سلّتك فارغة — اختر قلمك الأول' : 'Your cart is empty';
-    }
-    let total = 0;
-    Object.entries(cart).forEach(([id, qty]) => {
-      if (PRODUCTS[id]) total += PRODUCTS[id].price * qty;
-    });
-    return lang === 'ar'
-      ? `${count} قطعة · المجموع ${total.toLocaleString()} ر.س — الدفع قريبًا`
-      : `${count} items · Total ${total.toLocaleString()} SAR — checkout soon`;
-  }
+  /* ============== CART BUTTONS — navigate to cart page ============== */
   [cartBtn, cartBtnMobile].forEach(b => {
-    if (b) b.addEventListener('click', () => showToast(cartSummary()));
+    if (b) b.addEventListener('click', () => navigate('cart'));
   });
 
   /* ============== NEWSLETTER ============== */
