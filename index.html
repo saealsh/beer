@@ -1617,7 +1617,7 @@ ul { list-style: none; }
    ========================================================================== */
 @media (max-width: 1024px) {
   .app { grid-template-columns: 1fr; }
-  .main { grid-column: 1; }
+  .main { grid-column: 1 / -1; width: 100%; }
   .sidebar {
     transform: translateX(100%);
     box-shadow: var(--shadow-lg);
